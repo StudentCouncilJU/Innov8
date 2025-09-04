@@ -33,7 +33,6 @@ export function LabCard({
       {/* Glow layer */}
 
       {/* Card Body */}
-      <div className="relative z-20 flex flex-col p-5">
 
         <div className="overflow-hidden rounded-2xl border border-neutral-700 bg-black relative z-10">
           <Image
@@ -57,16 +56,15 @@ export function LabCard({
                         className="from-transparent via-blue-300 to-transparent"
                       />
         </div>
-      </div>
 
-      <header>
+      {/* <header>
         <h3
-          id={`${title}-title`}
-          className="text-xl md:text-2xl font-extrabold uppercase tracking-tight text-white text-balance"
+        id={`${title}-title`}
+        className="text-xl md:text-2xl font-extrabold uppercase tracking-tight text-white text-balance"
         >
-          {title}
+        {title}
         </h3>
-      </header>
+        </header> */}
 
       <p className="text-sm md:text-base leading-relaxed text-neutral-300">
         {description}
@@ -75,9 +73,9 @@ export function LabCard({
       <div>
         <Link
           href={href}
-          className="inline-flex rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+          className="inline-flex font-anton tracking-wide rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-transparent border-2 border-blue-600 hover:border-white duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
           aria-label={`Read more about ${title}`}
-        >
+          >
           Read More
         </Link>
       </div>

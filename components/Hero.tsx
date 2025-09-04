@@ -23,7 +23,6 @@ function Hero() {
 
   return (
     <div className="w-full h-full flex flex-col justify-between items-center relative">
-
       <div className="w-full h-full flex px-10 py-10 flex-1">
         <div className="absolute inset-0">
           <div className="absolute inset-0 z-0">
@@ -35,17 +34,22 @@ function Hero() {
           </RenderModel> */}
         </div>
         <div className="flex flex-col z-50 justify-end items-start gap-4 w-full">
-          <h1 className="uppercase font-impact text-white text-8xl">
-            JU Innov8 &apos; 25
+          <h1 className="uppercase font-anton text-white text-8xl">
+            JU Innov8 3.0
           </h1>
           <p className="font-sans capitalize text-md max-w-2xl text-white">
             Immerse yourself in a hub of technological innovation at INNOV8,
             where the brightest minds in Software, Hardware, and eSports
-            converge to compete and collaborate.
+            converge to compete and collaborate. From crafting software
+            solutions to engineering hardware prototypes and
+            mastering the world of gaming.
           </p>
+          <button className="bg-blue-600 text-white border-blue-600 border-2 hover:bg-transparent hover:border-white duration-300 cursor-pointer font-anton tracking-wide py-3 px-8 text-lg rounded-full">
+            Register Now
+          </button>
         </div>
       </div>
-      <div className="w-full flex justify-end items-center h-32 z-10 absolute bg-gradient-to-t from-black to-transparent bottom-0"/>
+      <div className="w-full flex justify-end items-center h-32 z-10 absolute bg-gradient-to-t from-black to-transparent bottom-0" />
     </div>
   );
 }

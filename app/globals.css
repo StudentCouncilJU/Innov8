@@ -81,8 +81,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-impact: 'Impact', 'Arial Black', sans-serif;
-  --font-impacted: 'Impacted', 'Impact', 'Arial Black', sans-serif;
+  --font-anton: 'Impact', 'Arial Black', sans-serif;
+  --font-antoned: 'Impacted', 'Impact', 'Arial Black', sans-serif;
   --font-unicode-impact: 'Unicode Impact', 'Impact', 'Arial Black', sans-serif;
   --font-big-shoulders-display: 'Big Shoulders', sans-serif;
   --font-anton: 'Anton', sans-serif;
