@@ -315,11 +315,11 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import { gsap } from "gsap"
 
 interface VortexProps {
-  children?: any
+  children?: React.ReactNode
   className?: string
   containerClassName?: string
   particleCount?: number
@@ -370,22 +370,17 @@ export const Vortex = (props: VortexProps) => {
     return 0.3 + 0.7 * t
   }
 
-  const setup = () => {
-    const canvas = canvasRef.current
-    const container = containerRef.current
-    if (canvas && container) {
-      const ctx =
-        (canvas.getContext("2d", { alpha: true } as any) as CanvasRenderingContext2D | null) ||
-        (canvas.getContext("2d") as CanvasRenderingContext2D | null)
-      if (ctx) {
-        resize(canvas, ctx)
-        initParticles()
-        draw(canvas, ctx)
-      }
-    }
-  }
+  const resize = useCallback((canvas: HTMLCanvasElement) => {
+    const { innerWidth, innerHeight } = window
 
-  const initParticles = () => {
+    canvas.width = innerWidth
+    canvas.height = innerHeight
+
+    center[0] = 0.5 * canvas.width
+    center[1] = 0.5 * canvas.height
+  }, [])
+
+  const initParticles = useCallback(() => {
     particleProps = new Float32Array(particlePropsLength)
 
     const N = particleCount
@@ -452,35 +447,12 @@ export const Vortex = (props: VortexProps) => {
 
       particleProps.set([x, y, z, radius, hue], i)
     }
-  }
-
-  const draw = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
-    tick++
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    if (fillBackground) {
-      ctx.fillStyle = backgroundColor
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-    }
-
-    drawParticles(canvas, ctx)
-    renderGlow(canvas, ctx)
-    renderToScreen(canvas, ctx)
-
-    // animationFrameId.current = window.requestAnimationFrame(() => draw(canvas, ctx))
-  }
+  }, [particlePropsLength, particleCount, props.minSeparationAngle, TAU, particlePropCount, baseRadius, rangeRadius, baseHue, rangeHue, rand])
 
   const rotateY = (x: number, y: number, z: number, a: number) => {
     const cos = Math.cos(a),
       sin = Math.sin(a)
     return [cos * x + sin * z, y, -sin * x + cos * z] as const
-  }
-
-  const rotateX = (x: number, y: number, z: number, a: number) => {
-    const cos = Math.cos(a),
-      sin = Math.sin(a)
-    return [x, cos * y - sin * z, sin * y + cos * z] as const
   }
 
   const project = (x: number, y: number, z: number, cx: number, cy: number, fov: number, zOffset: number) => {
@@ -489,7 +461,30 @@ export const Vortex = (props: VortexProps) => {
     return [cx + x * s, cy + y * s, s] as const
   }
 
-  const drawParticles = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+  const drawStroke = (
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    radius: number,
+    strokeColor: string,
+    alpha: number,
+    ctx: CanvasRenderingContext2D,
+  ) => {
+    ctx.save()
+    ctx.lineCap = "round"
+    ctx.lineWidth = radius
+    ctx.globalAlpha = alpha
+    ctx.strokeStyle = strokeColor
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.lineTo(x2, y2)
+    ctx.stroke()
+    ctx.closePath()
+    ctx.restore()
+  }
+
+  const drawParticles = useCallback((canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     const sphereR = props.sphereRadius ?? Math.min(canvas.width, canvas.height) * (props.sphereScale ?? 0.35)
     const fov = 800
     const zOffset = sphereR * 1.5
@@ -530,40 +525,7 @@ export const Vortex = (props: VortexProps) => {
 
       drawStroke(sx1, sy1, sx2, sy2, radius, strokeColor, alpha, ctx)
     }
-  }
-
-  const drawStroke = (
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
-    radius: number,
-    strokeColor: string,
-    alpha: number,
-    ctx: CanvasRenderingContext2D,
-  ) => {
-    ctx.save()
-    ctx.lineCap = "round"
-    ctx.lineWidth = radius
-    ctx.globalAlpha = alpha
-    ctx.strokeStyle = strokeColor
-    ctx.beginPath()
-    ctx.moveTo(x1, y1)
-    ctx.lineTo(x2, y2)
-    ctx.stroke()
-    ctx.closePath()
-    ctx.restore()
-  }
-
-  const resize = (canvas: HTMLCanvasElement, ctx?: CanvasRenderingContext2D) => {
-    const { innerWidth, innerHeight } = window
-
-    canvas.width = innerWidth
-    canvas.height = innerHeight
-
-    center[0] = 0.5 * canvas.width
-    center[1] = 0.5 * canvas.height
-  }
+  }, [props.sphereRadius, props.sphereScale, props.palette, rotationSpeed, particlePropsLength, particlePropCount, rotateY, project, center, fadeDepth, saturation, lightness, drawStroke])
 
   const renderGlow = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     ctx.save()
@@ -586,13 +548,42 @@ export const Vortex = (props: VortexProps) => {
     ctx.restore()
   }
 
-  const handleResize = () => {
-    const canvas = canvasRef.current
-    const ctx = canvas?.getContext("2d")
-    if (canvas && ctx) {
-      resize(canvas, ctx)
+  const draw = useCallback((canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+    tick++
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    if (fillBackground) {
+      ctx.fillStyle = backgroundColor
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
     }
-  }
+
+    drawParticles(canvas, ctx)
+    renderGlow(canvas, ctx)
+    renderToScreen(canvas, ctx)
+  }, [fillBackground, backgroundColor, drawParticles])
+
+  const setup = useCallback(() => {
+    const canvas = canvasRef.current
+    const container = containerRef.current
+    if (canvas && container) {
+      const ctx =
+        (canvas.getContext("2d", { alpha: true }) as CanvasRenderingContext2D | null) ||
+        (canvas.getContext("2d") as CanvasRenderingContext2D | null)
+      if (ctx) {
+        resize(canvas)
+        initParticles()
+        draw(canvas, ctx)
+      }
+    }
+  }, [draw, resize, initParticles])
+
+  const handleResize = useCallback(() => {
+    const canvas = canvasRef.current
+    if (canvas) {
+      resize(canvas)
+    }
+  }, [resize])
 
   useEffect(() => {
     setup()
@@ -615,7 +606,7 @@ export const Vortex = (props: VortexProps) => {
       window.removeEventListener("resize", handleResize)
       gsap.ticker.remove(loop)
     }
-  }, [])
+  }, [setup, handleResize, draw])
 
   return (
     <div className={cn("relative h-full w-full", props.containerClassName)}>

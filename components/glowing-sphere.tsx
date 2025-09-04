@@ -70,7 +70,7 @@
 
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
@@ -99,16 +99,18 @@ export function GlowingSphere({
   rangeRadius = 0.01,
   noiseIntensity = 0.1,
 }: GlowingSphereProps) {
-  const pointsRef = useRef<THREE.Points>(null);
+  // Reference to the Points object for rotation animation
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+  const pointsRef = useRef<any>(null);
   const materialRef = useRef<any>(null);
-  const particlePropsRef = useRef<Float32Array>();
+  const particlePropsRef = useRef<Float32Array | null>(null);
   
   // Vortex-inspired constants
   const particlePropCount = 12; // x, y, z, vx, vy, vz, life, ttl, speed, radius, hue, initialRadius
   const particlePropsLength = particleCount * particlePropCount;
   const baseTTL = 50;
   const rangeTTL = 150;
-  const rangeHue = 100;
+  // const rangeHue = 100;
   const noiseSteps = 3;
   const xOff = 0.00125;
   const yOff = 0.00125;
@@ -119,9 +121,9 @@ export function GlowingSphere({
   
   // Utility functions from Vortex
   const rand = (n: number): number => n * Math.random();
-  const randRange = (n: number): number => n - rand(2 * n);
+  // const randRange = (n: number): number => n - rand(2 * n);
   const fadeInOut = (t: number, m: number): number => {
-    let hm = 0.5 * m;
+    const hm = 0.5 * m;
     return Math.abs(((t + hm) % m) - hm) / hm;
   };
   const lerp = (n1: number, n2: number, speed: number): number =>
@@ -164,8 +166,36 @@ export function GlowingSphere({
     // Initialize particle properties array
     particlePropsRef.current = new Float32Array(particlePropsLength);
     
+    // Initialize particle on sphere surface (moved inside useMemo)
+    const initParticleLocal = (i: number) => {
+      const phi = Math.acos(2 * Math.random() - 1);
+      const theta = 2 * Math.PI * Math.random();
+      const radius = scale;
+
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.sin(phi) * Math.sin(theta);
+      const z = radius * Math.cos(phi);
+
+      const vx = 0;
+      const vy = 0;
+      const vz = 0;
+      const life = 0;
+      const ttl = baseTTL + rand(rangeTTL);
+      const speed = baseSpeed + rand(rangeSpeed);
+      const particleRadius = baseRadius + rand(rangeRadius);
+      const hue = baseHue;
+      const initialRadius = Math.sqrt(x * x + y * y + z * z);
+
+      if (particlePropsRef.current) {
+        particlePropsRef.current.set(
+          [x, y, z, vx, vy, vz, life, ttl, speed, particleRadius, hue, initialRadius],
+          i
+        );
+      }
+    };
+    
     for (let i = 0; i < particlePropsLength; i += particlePropCount) {
-      initParticle(i);
+      initParticleLocal(i);
     }
 
     return {
@@ -173,7 +203,7 @@ export function GlowingSphere({
       particleSizes: sizes,
       particleColors: colors,
     };
-  }, [particleCount, scale]);
+  }, [particleCount, scale, particlePropsLength, baseHue, baseSpeed, rangeSpeed, baseRadius, rangeRadius]);
 
   // Update particles with Vortex-style animation
   const updateParticles = () => {
@@ -183,7 +213,7 @@ export function GlowingSphere({
 
     for (let i = 0; i < particlePropsLength; i += particlePropCount) {
       const i2 = 1 + i, i3 = 2 + i, i4 = 3 + i, i5 = 4 + i, i6 = 5 + i;
-      const i7 = 6 + i, i8 = 7 + i, i9 = 8 + i, i10 = 9 + i, i11 = 10 + i, i12 = 11 + i;
+      const i7 = 6 + i, i8 = 7 + i, i9 = 8 + i, i10 = 9 + i, i11 = 10 + i;
 
       let x = particlePropsRef.current[i];
       let y = particlePropsRef.current[i2];
@@ -194,16 +224,16 @@ export function GlowingSphere({
       const n2 = noise3D(y * xOff, z * yOff, tick * zOff) * noiseSteps * 0.1;
       const n3 = noise3D(z * xOff, x * yOff, tick * zOff) * noiseSteps * 0.1;
       
-      let vx = lerp(particlePropsRef.current[i4], Math.cos(n1) * noiseIntensity, 0.02);
-      let vy = lerp(particlePropsRef.current[i5], Math.sin(n2) * noiseIntensity, 0.02);
-      let vz = lerp(particlePropsRef.current[i6], Math.cos(n3) * noiseIntensity, 0.02);
+      const vx = lerp(particlePropsRef.current[i4], Math.cos(n1) * noiseIntensity, 0.02);
+      const vy = lerp(particlePropsRef.current[i5], Math.sin(n2) * noiseIntensity, 0.02);
+      const vz = lerp(particlePropsRef.current[i6], Math.cos(n3) * noiseIntensity, 0.02);
       
       const life = particlePropsRef.current[i7];
       const ttl = particlePropsRef.current[i8];
       const speed = particlePropsRef.current[i9];
       const radius = particlePropsRef.current[i10];
       const hue = particlePropsRef.current[i11];
-      const initialRadius = particlePropsRef.current[i12];
+      // const initialRadius = particlePropsRef.current[i12];
 
       // Update position with constrained movement to maintain sphere shape
       x += vx * speed;
@@ -289,12 +319,14 @@ export function GlowingSphere({
       {/* Add size and color attributes */}
       <bufferAttribute
         attach="geometry-attributes-size"
+        args={[particleSizes, 1]}
         count={particleCount}
         array={particleSizes}
         itemSize={1}
       />
       <bufferAttribute
         attach="geometry-attributes-color"
+        args={[particleColors, 3]}
         count={particleCount}
         array={particleColors}
         itemSize={3}

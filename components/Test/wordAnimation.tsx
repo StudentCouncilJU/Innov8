@@ -71,7 +71,7 @@ export default function RotatingWords({
   );
 }
 
-function GradientText({ children }) {
+function GradientText({ children }: { children: React.ReactNode }) {
   return (
     <span className="text-black font-anton uppercase tracking-wider">
       {children}

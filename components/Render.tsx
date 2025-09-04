@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import clsx from "clsx";
 import React, { Suspense } from "react";
-import { Environment, PerformanceMonitor, SpotLight } from "@react-three/drei";
+import { Environment, PerformanceMonitor } from "@react-three/drei";
 
 interface RenderModelProps {
   children: React.ReactNode;

@@ -60,7 +60,7 @@ const VerticlesSections = () => {
         },
       });
 
-      cardsRef.current.forEach((card, i) => {
+      cardsRef.current.forEach((card) => {
         tl.fromTo(
           card,
           { autoAlpha: 0, xPercent: -100, yPercent: 100 },
@@ -78,8 +78,10 @@ const VerticlesSections = () => {
     return () => ctx.revert();
   }, []);
 
-  const setRef = (el: HTMLDivElement, i: number) => {
-    cardsRef.current[i] = el;
+  const setRef = (el: HTMLDivElement | null, i: number) => {
+    if (el) {
+      cardsRef.current[i] = el;
+    }
   };
 
   return (
@@ -101,18 +103,18 @@ const VerticlesSections = () => {
         {Array.from({ length: 3 }).map((_, i) => (
           <div
             key={i}
-            ref={(el) => el && setRef(el, i)}
-            className="absolute p-8 border-2 border-black rounded-xl bg-black"
+            ref={(el) => setRef(el, i)}
+            className="absolute  border-2 border-black rounded-xl bg-black"
           >
             <video
-              className="w-full max-w-4xl rounded-lg"
+              className="w-full max-w-2xl rounded-lg"
               autoPlay
               muted
               loop
               playsInline
             >
-              <source src={`/videos/video-${i + 1}.mp4`} type="video/mp4" />
-              <source src={`/videos/video-${i + 1}.webm`} type="video/webm" />
+              <source src={`/video/${i + 1}.mp4`} type="video/mp4" />
+              {/* <source src={`/videos/video-${i + 1}.webm`} type="video/webm" /> */}
               Your browser does not support the video tag.
             </video>
             <BorderBeam
@@ -127,9 +129,10 @@ const VerticlesSections = () => {
               borderWidth={2}
               className="from-transparent via-blue-300 to-transparent"
             />
-            <h2 className="text-white text-2xl md:text-3xl font-bold text-center mt-4">
-              Project {i + 1}
-            </h2>
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute bottom-0 flex items-center justify-center p-6 w-full text-white">
+              <h2 className="text-4xl font-anton tracking-wider text-white/40 mb-2">{i + 1 === 1 ? "Software" : i + 1 === 2 ? "Hardware" : "Esports"}</h2>
+            </div>
           </div>
         ))}
       </div>

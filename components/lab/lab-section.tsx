@@ -18,34 +18,34 @@ type LabSectionProps = {
 
 export default function LabSection({
   headingLeft = "DOMAIN",
-  paragraphRight = "Step into our creative playground - where relentless curiosity fuels original ideas and unforgettable formats. Every IP carries our signature spark: bold, unexpected, and unmistakably Tessarakt.",
+  // paragraphRight = "Step into our creative÷ playground - where relentless curiosity fuels original ideas and unforgettable formats. Every IP carries our signature spark: bold, unexpected, and unmistakably Tessarakt.",
   items = [
     {
       id: "1",
       title: "Blend Bazaar 2023",
       description:
-        "A creator-powered fusion festival celebrating food, fashion, fiction, and music. Curated by Tessarakt Experiential and The Blend Community.",
+        "Focusing on coding, applications, and AI-driven solutions, this domain empowers participants to craft impactful software innovations. It highlights problem-solving through algorithms, development, and real-world digital products.",
       imageUrl: "/sections/software.png",
       imageAlt: "Festival stage with vibrant lights and a crowd.",
-      href: "#",
+      href: "/software",
     },
     {
       id: "2",
       title: "Mouna: Short Film",
       description:
-        "A silent short that speaks volumes through emotion, stillness, and cinematic grace. Written, Directed, and Edited by Bharath MC.",
+        "A platform to showcase innovation in circuits, robotics, and embedded systems. The hardware domain encourages participants to design, build, and present practical solutions that merge creativity with cutting-edge technology.",
       imageUrl: "/sections/hardware.png",
       imageAlt: "Close-up cinematic frame from a short film.",
-      href: "#",
+      href: "/hardware",
     },
     {
       id: "3",
       title: "Mud Mud Ke Na Dekh",
       description:
-        "A classic love triangle with a sharp, queer twist: an ex-husband, his best friend, and her new love. Produced by Tessarakt Productions.",
+        "Blending technology with competitive spirit, the esports domain brings together gamers to battle it out in a high-energy environment. It celebrates strategy, skill, and teamwork across popular competitive titles.",
       imageUrl: "/sections/esports.png",
       imageAlt: "Cozy living room still with three characters.",
-      href: "#",
+      href: "/esports",
     },
   ],
 }: LabSectionProps) {

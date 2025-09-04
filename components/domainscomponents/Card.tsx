@@ -8,10 +8,10 @@ interface CardProps {
   image: string;
 }
 
-const Card = ({name, description, link, image}: CardProps) => {
+const Card = ({name}: CardProps) => {
   return (
     <div className='min-w-[20rem] max-w-[20rem] border-2 border-white/30 hover:border-blue-600 backdrop-blur-sm rounded-xl p-6 flex flex-col items-start space-y-4'>
-        <Image src={image} alt={name} width={300} height={300} />
+        <Image src={"/posters/2.jpg"} alt={name} width={300} height={300} />
         <h1 className='text-white font-anton text-2xl uppercase'>{name}</h1>
         {/* <p className='text-white font-sans '>{description}</p> */}
         <div className='w-full flex justify-between'>

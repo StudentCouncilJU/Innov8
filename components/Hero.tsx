@@ -4,7 +4,6 @@ import React from "react";
 // import { Model } from "./models/Model";
 // import { GlowingSphere } from "./glowing-sphere";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
 // import { Vortex } from "./vortex";
 import VortexDemoSecond from "./vortex-demo-2";
 

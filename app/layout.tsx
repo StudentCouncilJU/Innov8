@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import CursorAura from "@/components/CursorAura";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,12 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <CursorAura color="rgba(0,150,255,1)"
+          // maxPoints={90}
+          pointSize={26}
+          // decay={0.025}
+          // blur={14}
+        />
       <GoogleAnalytics gaId="G-0JYGXDHYMM" />
     </html>
   );

@@ -33,7 +33,7 @@ function Navbar() {
           />
         </Link>
         </div>
-        <button className="bg-[#0227F0] text-white px-6 py-2 rounded-full font-anton hover:bg-blue-700 transition">
+        <button className="bg-[#0227F0] text-white hover:bg-transparent border-2 border-[#0227F0] hover:border-white duration-300 cursor-pointer  px-6 py-2 rounded-full font-anton  transition">
           Get in touch
         </button>
       </div>

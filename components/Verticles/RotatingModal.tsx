@@ -1,8 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+    /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export function Model(props) {
-  const group = useRef();
+
+export function Model(props: any) {
+  const group = useRef<any>(null);
   const { nodes, materials, animations } = useGLTF(
     "/Models/looking_glass_hologram_technology_meet_art.glb"
   );
@@ -52,14 +54,14 @@ export function Model(props) {
                         name="Concept_203_hexagon__0"
                         castShadow
                         receiveShadow
-                        geometry={nodes.Concept_203_hexagon__0.geometry}
+                        geometry={(nodes.Concept_203_hexagon__0 as any).geometry}
                         material={materials.hexagon}
                       />
                       <mesh
                         name="Concept_203_glowing_edges_0"
                         castShadow
                         receiveShadow
-                        geometry={nodes.Concept_203_glowing_edges_0.geometry}
+                        geometry={(nodes.Concept_203_glowing_edges_0 as any).geometry}
                         material={materials.glowing_edges}
                       />
                     </group>
@@ -78,7 +80,7 @@ export function Model(props) {
                         castShadow
                         receiveShadow
                         geometry={
-                          nodes.Concept_2_orange_line01_thin_line_0.geometry
+                          (nodes.Concept_2_orange_line01_thin_line_0 as any).geometry
                         }
                         material={materials.thin_line}
                       />
@@ -96,7 +98,7 @@ export function Model(props) {
                       name="Concept_201_blue_cube_mapped_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Concept_201_blue_cube_mapped_0.geometry}
+                      geometry={(nodes.Concept_201_blue_cube_mapped_0 as any).geometry}
                       material={materials.blue_cube_mapped}
                     />
                   </group>
@@ -116,7 +118,7 @@ export function Model(props) {
                       name="Plane002_volume_light_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Plane002_volume_light_0.geometry}
+                      geometry={(nodes.Plane002_volume_light_0 as any).geometry}
                       material={materials.volume_light}
                     />
                   </group>
@@ -132,7 +134,7 @@ export function Model(props) {
                       name="Concept_204_blue_cube_mapped_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Concept_204_blue_cube_mapped_0.geometry}
+                      geometry={(nodes.Concept_204_blue_cube_mapped_0 as any).geometry}
                       material={materials.blue_cube_mapped}
                     />
                   </group>
@@ -152,7 +154,7 @@ export function Model(props) {
                       name="Plane004_volume_light_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Plane004_volume_light_0.geometry}
+                      geometry={(nodes.Plane004_volume_light_0 as any).geometry}
                       material={materials.volume_light}
                     />
                   </group>
@@ -172,7 +174,7 @@ export function Model(props) {
                       name="Plane005_volume_light_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Plane005_volume_light_0.geometry}
+                      geometry={(nodes.Plane005_volume_light_0 as any).geometry}
                       material={materials.volume_light}
                     />
                   </group>
@@ -192,7 +194,7 @@ export function Model(props) {
                       name="Plane006_volume_light_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Plane006_volume_light_0.geometry}
+                      geometry={(nodes.Plane006_volume_light_0 as any).geometry}
                       material={materials.volume_light}
                     />
                   </group>
@@ -212,7 +214,7 @@ export function Model(props) {
                       name="Plane007_volume_light_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Plane007_volume_light_0.geometry}
+                      geometry={(nodes.Plane007_volume_light_0 as any).geometry}
                       material={materials.volume_light}
                     />
                   </group>
@@ -233,7 +235,7 @@ export function Model(props) {
                       name="Plane008_volume_light_0"
                       castShadow
                       receiveShadow
-                      geometry={nodes.Plane008_volume_light_0.geometry}
+                      geometry={(nodes.Plane008_volume_light_0 as any).geometry}
                       material={materials.volume_light}
                     />
                   </group>
