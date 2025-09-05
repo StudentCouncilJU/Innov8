@@ -24,7 +24,7 @@ const Footer = () => {
 
       {/* Content overlay */}
       <div className="relative z-10 flex items-end justify-between min-h-screen px-6">
-        <div className="text-white/40 stroke-2 stroke-amber-300 text-3xl md:text-[10rem] uppercase -mb-15  font-big-shoulders-extrabold tracking-wider">
+        <div className="text-white/40 hidden md:block stroke-2 stroke-amber-300 text-3xl md:text-[10rem] uppercase -mb-15  font-big-shoulders-extrabold tracking-wider">
           Ju Innov8 3.0
         </div>
         {/* Collaboration Form */}
@@ -40,7 +40,7 @@ const Footer = () => {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2139788935817!2d77.70644431482252!3d12.956673990859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11b5f6b4e7a7%3A0x4c9f8b4c4c8b0e5d!2s60%20Feet%20Rd%2C%20OMBR%20Layout%2C%20Banaswadi%2C%20Bengaluru%2C%20Karnataka%20560043!5e0!3m2!1sen!2sin!4v1693401234567!5m2!1sen!2sin"
                 width="100%"
-                height="200"
+                height="150"
                 style={{ border: 0 }}
                 allowFullScreen={true}
                 loading="lazy"
@@ -52,20 +52,20 @@ const Footer = () => {
             {/* Instagram Links */}
             <div className="space-y-3 w-full">
               <a
-                href="https://instagram.com/your_account_1"
+                href="https://www.instagram.com/student_council_ju/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full bg-blue-600 text-white font-anton tracking-widest text-center py-3 px-4 font-semibold hover:bg-blue-700 transition-colors duration-200"
               >
-                @your_account_1
+                @Student_Council_JU
               </a>
               <a
-                href="https://instagram.com/your_account_2"
+                href="https://www.instagram.com/jecrcuniversity/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full bg-blue-600 text-white font-anton tracking-widest text-center py-3 px-4 font-semibold hover:bg-blue-700 transition-colors duration-200"
               >
-                @your_account_2
+                @jecrcuniversity
               </a>
             </div>
 
@@ -77,7 +77,7 @@ const Footer = () => {
                   href="tel:+1234567890"
                   className="text-white hover:text-white/80 transition-colors duration-200 font-anton tracking-wide"
                 >
-                  +1 (234) 567-890
+                  +91 96643 30564
                 </a>
               </div>
 
@@ -87,7 +87,7 @@ const Footer = () => {
                   href="tel:+9876543210"
                   className="text-white hover:text-white/80 transition-colors duration-200 font-anton tracking-wide"
                 >
-                  +91 98765 43210
+                 +91 861 996 4199
                 </a>
               </div>
 
@@ -97,7 +97,7 @@ const Footer = () => {
                   href="tel:+1122334455"
                   className="text-white hover:text-white/80 transition-colors duration-200 font-anton tracking-wide"
                 >
-                  +1 (112) 233-4455
+                  +91 80031 50294
                 </a>
               </div>
             </div>
@@ -108,6 +108,9 @@ const Footer = () => {
                 reserved.
               </p>
             </div>
+        <div className="text-white/40  stroke-2 stroke-amber-300 text-5xl uppercase -mb-12  font-big-shoulders-extrabold tracking-wider">
+          Ju Innov8 3.0
+        </div>
           </div>
         </div>
       </div>

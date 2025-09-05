@@ -33,7 +33,7 @@ function Hero() {
           </RenderModel> */}
         </div>
         <div className="flex flex-col z-50 justify-end items-start gap-4 w-full">
-          <h1 className="uppercase font-anton text-white text-8xl">
+          <h1 className="uppercase font-anton text-white text-6xl md:text-8xl">
             JU Innov8 3.0
           </h1>
           <p className="font-sans capitalize text-md max-w-2xl text-white">
