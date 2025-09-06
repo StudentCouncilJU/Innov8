@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div id="footer" className="relative min-h-screen w-full overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-screen h-screen object-cover z-0"
@@ -111,7 +112,7 @@ const Footer = () => {
             <div className="w-full">
               {/* copyright */}
               <p className="text-sm text-center text-white font-anton ">
-                Build by Aman Janwani and designed by Saksham Saraogi
+                Build by <Link className="text-blue-600" href="https://amanjanwani.me">Aman Janwani</Link> and designed by Saksham Saraogi
               </p>
             </div>
         <div className="text-white/40 md:hidden  stroke-2 stroke-amber-300 text-5xl uppercase -mb-12  font-big-shoulders-extrabold tracking-wider">

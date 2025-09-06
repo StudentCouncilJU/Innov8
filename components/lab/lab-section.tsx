@@ -50,7 +50,7 @@ export default function LabSection({
   ],
 }: LabSectionProps) {
   return (
-    <section className="bg-black text-white">
+    <section id="domains" className="bg-black text-white">
       <div className="mx-auto w-full   py-16 md:py-24">
         {/* Top: massive LAB + paragraph */}
         <div className="grid grid-cols-1 w-full  pl-4 md:pl-6 lg:pl-10 md:grid-cols-12 items-start gap-8 md:gap-10">

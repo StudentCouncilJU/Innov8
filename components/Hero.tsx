@@ -32,7 +32,7 @@ function Hero() {
             <GlowingSphere scale={5} />
           </RenderModel> */}
         </div>
-        <div className="flex flex-col z-50 justify-end items-start gap-4 w-full">
+        <div className="flex flex-col z-30 justify-end items-start gap-4 w-full">
           <h1 className="uppercase font-anton text-white text-6xl md:text-8xl">
             JU Innov8 3.0
           </h1>
@@ -43,7 +43,12 @@ function Hero() {
             solutions to engineering hardware prototypes and
             mastering the world of gaming.
           </p>
-          <button className="bg-blue-600 text-white border-blue-600 border-2 hover:bg-transparent hover:border-white duration-300 cursor-pointer font-anton tracking-wide py-3 px-8 text-lg rounded-full">
+          <button onClick={() => {
+            const footerElement = document.getElementById('domains');
+            if (footerElement) {
+              footerElement.scrollIntoView({ behavior: 'smooth' });
+            }
+          }} className="bg-blue-600 text-white border-blue-600 border-2 hover:bg-transparent hover:border-white duration-300 cursor-pointer font-anton tracking-wide py-3 px-8 text-lg rounded-full">
             Register Now
           </button>
         </div>

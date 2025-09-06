@@ -1,3 +1,4 @@
+"use client";
 import Card from "@/components/domainscomponents/Card";
 import Navbar from "@/components/Navbar";
 import React from "react";

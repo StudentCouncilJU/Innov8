@@ -40,7 +40,7 @@ function Navbar() {
           Sponsors
         </Link>
         <div className="gap-1 hidden md:flex">
-          <Link href="https://www.instagram.com/studentcouncil_ju/">
+          <Link href="https://www.instagram.com/student_council_ju/">
             <Image
               src="/images/icons/insta.svg"
               alt="instagram"
@@ -59,7 +59,15 @@ function Navbar() {
             />
           </Link>
         </div>
-        <button className="hidden md:block bg-[#0227F0] text-white hover:bg-transparent border-2 border-[#0227F0] hover:border-white duration-300 cursor-pointer  px-6 py-2 rounded-full font-anton  transition">
+        <button 
+          onClick={() => {
+            const footerElement = document.getElementById('footer');
+            if (footerElement) {
+              footerElement.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="hidden md:block bg-[#0227F0] text-white hover:bg-transparent border-2 border-[#0227F0] hover:border-white duration-300 cursor-pointer  px-6 py-2 rounded-full font-anton  transition"
+        >
           Get in touch
         </button>
       </div>
