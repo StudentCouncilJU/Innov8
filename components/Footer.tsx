@@ -23,12 +23,12 @@ const Footer = () => {
       </video>
 
       {/* Content overlay */}
-      <div className="relative z-10 flex items-end justify-between min-h-screen px-6">
+      <div className="relative z-10 flex items-end justify-between md:items-end md:justify-center min-h-screen px-6">
         <div className="text-white/40 hidden md:block stroke-2 stroke-amber-300 text-3xl md:text-[10rem] uppercase -mb-15  font-big-shoulders-extrabold tracking-wider">
           Ju Innov8 3.0
         </div>
         {/* Collaboration Form */}
-        <div className="bg-white/30 backdrop-blur-sm rounded-t-full px-8 md:px-12 pt-8 md:pt-12 max-w-[25rem] w-full shadow-2xl">
+        <div className="bg-white/30 backdrop-blur-sm mx-auto rounded-t-full px-8 md:px-12 pt-8 md:pt-12 max-w-[25rem] w-full shadow-2xl">
           {/* Header */}
           <div className="text-center mb-8 flex flex-col gap-3 h-full justify-between items-center">
             <h1 className="text-xl md:text-3xl w-full  uppercase font-anton tracking-wide text-white mb-6">
@@ -38,7 +38,7 @@ const Footer = () => {
             {/* Google Maps */}
             <div className="mb-6 w-full">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2139788935817!2d77.70644431482252!3d12.956673990859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae11b5f6b4e7a7%3A0x4c9f8b4c4c8b0e5d!2s60%20Feet%20Rd%2C%20OMBR%20Layout%2C%20Banaswadi%2C%20Bengaluru%2C%20Karnataka%20560043!5e0!3m2!1sen!2sin!4v1693401234567!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7188.9312881326605!2d75.87389800094068!3d26.776580151088893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dc892b8f05399%3A0x43fbca7105eca800!2sJECRC%20University!5e0!3m2!1sen!2sin!4v1757135014600!5m2!1sen!2sin"
                 width="100%"
                 height="150"
                 style={{ border: 0 }}
