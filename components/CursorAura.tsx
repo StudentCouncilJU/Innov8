@@ -13,11 +13,11 @@ type CursorAuraProps = {
 type Point = { x: number; y: number; age: number };
 
 export default function CursorAura({
-  color = "rgba(0,120,255,1)",
-  maxPoints = 80,
-  pointSize = 28,
-  decay = 0.025, // slower fade for soft trail
-  blur = 16,     // more blur for softer aura
+  color = "rgba(173,216,230,0.15)", // soft light blue
+  maxPoints = 180,                  // longer trail
+  pointSize = 20,                   // smaller base particle
+  decay = 0.03,                      // slower fade for smoke
+  blur = 50,                         // more blur for misty feel
 }: CursorAuraProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rafRef = useRef<number | undefined>(undefined);
@@ -46,8 +46,8 @@ export default function CursorAura({
 
     function pushPoint(x: number, y: number) {
       const last = lastPosRef.current;
-      const smoothX = last.x + (x - last.x) * 0.25;
-      const smoothY = last.y + (y - last.y) * 0.25;
+      const smoothX = last.x + (x - last.x) * 0.2; // smoother, slower follow
+      const smoothY = last.y + (y - last.y) * 0.2;
       lastPosRef.current = { x: smoothX, y: smoothY };
 
       pointsRef.current.push({ x: smoothX, y: smoothY, age: 0 });
@@ -75,13 +75,15 @@ export default function CursorAura({
         const p = pointsRef.current[i];
         p.age += decay;
         const t = i / pointsRef.current.length;
-        const alpha = Math.max(0, 0.3 - p.age * 0.25 - (1 - t) * 0.15); // very soft light
+
+        // softer alpha for smoky look
+        const alpha = Math.max(0, 0.12 - p.age * 0.08 - (1 - t) * 0.05);
         if (alpha <= 0) continue;
 
-        const radius = pointSize * (0.4 + t * 1.6);
+        const radius = pointSize * (0.6 + t * 2.0);
         const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius);
         grad.addColorStop(0, withAlpha(color, alpha));
-        grad.addColorStop(0.6, withAlpha(color, alpha * 0.3));
+        grad.addColorStop(0.7, withAlpha(color, alpha * 0.2));
         grad.addColorStop(1, withAlpha(color, 0));
 
         ctx.beginPath();
@@ -93,7 +95,7 @@ export default function CursorAura({
       ctx.filter = "none";
       ctx.globalCompositeOperation = "source-over";
 
-      pointsRef.current = pointsRef.current.filter((p) => p.age <= 2);
+      pointsRef.current = pointsRef.current.filter((p) => p.age <= 3);
 
       rafRef.current = requestAnimationFrame(draw);
     }

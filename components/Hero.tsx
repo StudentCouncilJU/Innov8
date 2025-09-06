@@ -21,7 +21,7 @@ function Hero() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col justify-between items-center relative">
+    <div className="w-full h-full flex flex-col justify-between items-center relative z-10">
       <div className="w-full h-full flex px-10 py-10 flex-1">
         <div className="absolute inset-0">
           <div className="absolute inset-0 z-0">

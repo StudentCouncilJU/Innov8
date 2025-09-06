@@ -17,7 +17,7 @@ const Footer = () => {
           height: "100vh",
         }}
       >
-        <source src="/if.mp4" type="video/mp4" />
+        <source src="/innov8.mp4" type="video/mp4" />
         {/* <source src="/vid2.webm" type="video/webm" /> */}
         Your browser does not support the video tag.
       </video>
@@ -108,7 +108,13 @@ const Footer = () => {
                 reserved.
               </p>
             </div>
-        <div className="text-white/40  stroke-2 stroke-amber-300 text-5xl uppercase -mb-12  font-big-shoulders-extrabold tracking-wider">
+            <div className="w-full">
+              {/* copyright */}
+              <p className="text-sm text-center text-white font-anton ">
+                Build by Aman Janwani and designed by Saksham Saraogi
+              </p>
+            </div>
+        <div className="text-white/40 md:hidden  stroke-2 stroke-amber-300 text-5xl uppercase -mb-12  font-big-shoulders-extrabold tracking-wider">
           Ju Innov8 3.0
         </div>
           </div>

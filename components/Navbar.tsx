@@ -4,17 +4,16 @@ import Link from "next/link";
 
 function Navbar() {
   return (
-    <div className="flex justify-start z-50 items-center w-full py-4 px-10  fixed top-0  ">
-      <div className="min-w-1/3">{/* Audio */}
-      <div className="text-white aspect-square w-10 h-10 flex justify-center items-center bg-[#0227F0] rounded-full">A</div></div>
-      <div className="flex justify-center items-center flex-1">
+    <div className="flex justify-start z-50 items-center gap-3 w-full py-4 px-5 md:px-10 max-w-screen fixed top-0  ">
+      <div className="flex justify-start w-1/2 items-center flex-1">
         {/* Logo */}
-        <Image src="/logo.gif" alt="Logo" width={150} height={150} />
+
+        <Link href="/"><Image src="/logo.gif" alt="Logo" width={150} height={150} /></Link>
       </div>
-      <div className="flex gap-5 min-w-1/3 items-center justify-end">
+      <div className="flex gap-5 min-w-1/2 items-center justify-end">
         {/* Links */}
         <div className="flex gap-1">
-          <Link href="https://www.instagram.com">
+          <Link href="https://www.instagram.com/studentcouncil_ju/">
           <Image
             src="/images/icons/insta.svg"
             alt="instagram"
@@ -23,7 +22,7 @@ function Navbar() {
             className="text-white stroke-white"
           />
         </Link>
-        <Link href="https://www.linkedin.com">
+        <Link href="https://www.linkedin.com/company/student-council-jecrc-university/posts/?feedView=all">
           <Image
             src="/images/icons/linkedin.svg"
             alt="linkedin"

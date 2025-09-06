@@ -27,6 +27,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link';
 
 interface CardProps {
   name: string;
@@ -90,7 +91,7 @@ const Card = ({ name, description, link, image }: CardProps) => {
             
             {/* Modal Content */}
             <motion.div
-              className="relative bg-gray-900/95 backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+              className="relative bg-black backdrop-blur-md border border-white/20 rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
               initial={{ scale: 0.8, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 20 }}
@@ -151,14 +152,14 @@ const Card = ({ name, description, link, image }: CardProps) => {
                 {link && (
                   <div>
                     <h3 className="text-blue-400 font-anton text-xl mb-2">More Information</h3>
-                    <a 
+                    <Link
                       href={link} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-blue-400 hover:text-blue-300 underline"
                     >
                       Visit Event Page →
-                    </a>
+                    </Link>
                   </div>
                 )}
               </motion.div>

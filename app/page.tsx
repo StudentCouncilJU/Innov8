@@ -7,13 +7,14 @@ import LabSection from "@/components/lab/lab-section"
 import { Model } from "@/components/models/Model"
 import Navbar from "@/components/Navbar"
 import RenderModel from "@/components/Render"
+import Team from "@/components/Team"
 import VerticlesSections from "@/components/Verticles/VerticlesSections"
 
 export default function Home() {
   return (
     <div className="w-full h-screen bg-black relative">
       <Navbar />
-      <div className="absolute inset-0 z-10">
+      <div className="absolute inset-0 z-20">
         <RenderModel>
           <Model />
           <GlowingSphere scale={5} />
@@ -22,6 +23,7 @@ export default function Home() {
       <Hero />
       <VerticlesSections />
       <LabSection />
+      <Team />
       <Footer />
     </div>
   )
