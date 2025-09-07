@@ -18,7 +18,7 @@ const Footer = () => {
           height: "100vh",
         }}
       >
-        <source src="/innov8.mp4" type="video/mp4" />
+        <source src="/innov8.webm" type="video/webm" />
         {/* <source src="/vid2.webm" type="video/webm" /> */}
         Your browser does not support the video tag.
       </video>
