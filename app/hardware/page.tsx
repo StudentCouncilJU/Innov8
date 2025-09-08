@@ -1,6 +1,7 @@
 "use client";
 
 import Card from "@/components/domainscomponents/Card";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import React from "react";
 
@@ -84,30 +85,31 @@ const page = () => {
         <div className="w-full px-4 sm:px-6 md:px-8 py-4 flex mt-8 sm:mt-14 md:mt-20 flex-wrap gap-4 sm:gap-6 md:gap-7 justify-center">
           <Card
             name="Robo War (3lbs, 8kg, 15kg)"
-            description="Description for Card 1"
+            description="Contact us at +91 8003150294"
             link="#"
             image="/posters/robowar.png"
           />
           <Card
             name="Robo Soccer"
-            description="Description for Card 2"
+            description="Contact us at +91 8003150294"
             link="#"
             image="/posters/robosoccer.png"
           />
           <Card
             name="Robo Rush"
-            description="Description for Card 3"
+            description="Contact us at +91 8003150294"
             link="#"
             image="/posters/roborush.png"
           />
           <Card
             name="Go-Karting"
-            description="Description for Card 4"
+            description="Contact us at +91 8003150294"
             link="#"
             image="/posters/gokarting.png"
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

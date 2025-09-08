@@ -1,5 +1,6 @@
 "use client";
 import Card from "@/components/domainscomponents/Card";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import React from "react";
 
@@ -83,30 +84,31 @@ const page = () => {
         <div className="w-full px-4 sm:px-6 md:px-8 py-4 mt-8 sm:mt-14 md:mt-20 flex flex-wrap gap-4 sm:gap-6 md:gap-7 justify-center">
           <Card
             name="Hackathon"
-            description="Description for Card 1"
+            description="Contact us at +91 9664330564"
             link="#"
             image="/posters/hackathon.png"
           />
           <Card
             name="Code Hunt"
-            description="Description for Card 2"
+            description="Contact us at +91 9664330564"
             link="#"
             image="/posters/codehunt.png"
           />
           <Card
             name="Ghost Code"
-            description="Description for Card 3"
+            description="Contact us at +91 9664330564"
             link="#"
             image="/posters/ghostcode.png"
           />
           <Card
             name="Graphicon"
-            description="Description for Card 4"
+            description="Contact us at +91 9664330564"
             link="#"
             image="/posters/graphicon.png"
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

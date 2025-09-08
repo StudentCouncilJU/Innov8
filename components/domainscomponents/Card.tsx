@@ -157,7 +157,7 @@ const Card = ({ name, description, link, image }: CardProps) => {
                     Description
                   </h3>
                   <p className="text-white/80 leading-relaxed text-sm sm:text-base">
-                    {"Coming Soon..."}
+                    {description}
                   </p>
                 </div>
 
