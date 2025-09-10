@@ -29,6 +29,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface CardProps {
   name: string;
@@ -156,9 +158,70 @@ const Card = ({ name, description, link, image }: CardProps) => {
                   <h3 className="text-blue-400 font-anton text-lg sm:text-xl mb-2">
                     Description
                   </h3>
-                  <p className="text-white/80 leading-relaxed text-sm sm:text-base">
-                    {description}
-                  </p>
+                  <div className="text-white leading-relaxed text-sm sm:text-base prose prose-invert prose-sm sm:prose-base max-w-none">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        h1: ({ children }) => (
+                          <h1 className="text-blue-400 font-anton text-2xl sm:text-3xl uppercase tracking-wide mt-6 mb-4">
+                            {children}
+                          </h1>
+                        ),
+                        h2: ({ children }) => (
+                          <h2 className="text-blue-400 font-anton text-xl sm:text-2xl uppercase tracking-wide mt-5 mb-3">
+                            {children}
+                          </h2>
+                        ),
+                        h3: ({ children }) => (
+                          <h3 className="text-blue-400 font-anton text-lg sm:text-xl uppercase tracking-wide mt-4 mb-2">
+                            {children}
+                          </h3>
+                        ),
+                        p: ({ children }) => (
+                          <p className="text-white mb-3 leading-relaxed">
+                            {children}
+                          </p>
+                        ),
+                        ul: ({ children }) => (
+                          <ul className="text-white mb-3 space-y-1">
+                            {children}
+                          </ul>
+                        ),
+                        ol: ({ children }) => (
+                          <ol className="text-white mb-3 space-y-1 list-decimal list-inside">
+                            {children}
+                          </ol>
+                        ),
+                        li: ({ children }) => (
+                          <li className="text-white mb-1">
+                            {children}
+                          </li>
+                        ),
+                        strong: ({ children }) => (
+                          <strong className="text-white font-semibold">
+                            {children}
+                          </strong>
+                        ),
+                        em: ({ children }) => (
+                          <em className="text-white/90">
+                            {children}
+                          </em>
+                        ),
+                        a: ({ href, children }) => (
+                          <a
+                            href={href}
+                            className="text-blue-400 hover:text-blue-300 underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {children}
+                          </a>
+                        ),
+                      }}
+                    >
+                      {description}
+                    </ReactMarkdown>
+                  </div>
                 </div>
 
                 {/* <div>

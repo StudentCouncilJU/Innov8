@@ -43,6 +43,7 @@ function Hero() {
             solutions to engineering hardware prototypes and
             mastering the world of gaming.
           </p>
+          <h2 className="font-anton text-white text-2xl md:text-4xl">9th - 11th December</h2>
           <button onClick={() => {
             const footerElement = document.getElementById('domains');
             if (footerElement) {
