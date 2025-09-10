@@ -325,12 +325,12 @@ Only **1 participant** per entry.
             link="#"
             image="/posters/5.jpg"
           />
-          <Card
+          {/* <Card
             name="Fifa"
             description="Contact us at +91 8619964199"
             link="#"
             image="/posters/8.jpg"
-          />
+          /> */}
         </div>
       </div>
       <Footer />
