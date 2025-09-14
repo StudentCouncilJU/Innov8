@@ -475,7 +475,7 @@ The organizers reserve the right to modify or introduce additional rules as nece
             name="FIFA"
             description={'Coming soon...'}
             link="#"
-            image="/posters/8.png"
+            image="/posters/8.jpg"
             />
         </div>
       </div>
