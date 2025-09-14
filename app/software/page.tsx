@@ -16,7 +16,7 @@ const page = () => {
           <div className="flex items-center gap-3 sm:gap-5 animate-marquee whitespace-nowrap">
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Hackathon
+              Bid 2 Code
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
@@ -28,27 +28,15 @@ const page = () => {
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Graphicon
+              Prommptify
+            </span>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Bug Bounty
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Hackathon
-            </span>
-            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
-            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Code Hunt
-            </span>
-            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
-            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Ghost Code
-            </span>
-            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
-            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Graphicon
-            </span>
-            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
-            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Hackathon
+              Bid 2 Code
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
@@ -60,11 +48,15 @@ const page = () => {
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Graphicon
+              Prommptify
+            </span>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Bug Bounty
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Hackathon
+              Bid 2 Code
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
@@ -76,7 +68,31 @@ const page = () => {
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Graphicon
+              Prommptify
+            </span>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Bug Bounty
+            </span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Bid 2 Code
+            </span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Code Hunt
+            </span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Ghost Code
+            </span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Prommptify
+            </span>
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Bug Bounty
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
           </div>
@@ -144,7 +160,7 @@ The champions of Bid-2-Code will be those who dare to think differently, build f
 > *Violation of any of the above rules will lead to disqualification.*
 `}
             link="#"
-            image="/posters/bid2cote.png"
+            image="/posters/Bid2cote.png"
           />
           <Card
             name="Ghost code"

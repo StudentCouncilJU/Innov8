@@ -31,6 +31,10 @@ const page = () => {
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             Fifa
           </span>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Free Fire
+            </span>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             BGMI
@@ -47,6 +51,10 @@ const page = () => {
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             Fifa
           </span>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Free Fire
+            </span>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             BGMI
@@ -63,6 +71,10 @@ const page = () => {
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             Fifa
           </span>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Free Fire
+            </span>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             BGMI
@@ -79,6 +91,10 @@ const page = () => {
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             Fifa
           </span>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Free Fire
+            </span>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             BGMI
@@ -95,6 +111,10 @@ const page = () => {
           <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider">
             Fifa
           </span>
+                      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
+            <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
+              Free Fire
+            </span>
           <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
           </div>
         </div>
