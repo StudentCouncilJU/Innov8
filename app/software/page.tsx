@@ -84,9 +84,15 @@ const page = () => {
         <div className="w-full px-4 sm:px-6 md:px-8 py-4 mt-8 sm:mt-14 md:mt-20 flex flex-wrap gap-4 sm:gap-6 md:gap-7 justify-center">
           <Card
             name="Bid2code"
-            description={``}
+            description={`Coming Soon...`}
             link="#"
             image="/posters/bid2cote.png"
+          />
+          <Card
+            name="Ghost code"
+            description={``}
+            link="#"
+            image="/posters/ghostcode.png"
           />
           <Card
             name="Code Hunt"
