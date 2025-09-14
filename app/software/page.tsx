@@ -127,7 +127,7 @@ A team may consist of a maximum of **3 participants** and a minimum of **1 parti
             name="Promtify"
             description={`Coming Soon...`}
             link="#"
-            image="/posters/promtify.png"
+            image="/posters/promptify.png"
           />
         </div>
       </div>
