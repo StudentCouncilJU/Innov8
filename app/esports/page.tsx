@@ -331,6 +331,12 @@ Only **1 participant** per entry.
             link="#"
             image="/posters/freefire.png"
           /> 
+          <Card
+            name="FIFA"
+            description={`coming Soon...`}
+            link="#"
+            image="/posters/fifa.png"
+          />
         </div>
       </div>
       <Footer />
