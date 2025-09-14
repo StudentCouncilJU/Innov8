@@ -68,9 +68,9 @@ export default function Home() {
       <div id="lab">
         <LabSection />
       </div>
-      <div id="team">
+      {/* <div id="team">
         <Team />
-      </div>
+      </div> */}
      </div>
       <Footer />
     </div>
