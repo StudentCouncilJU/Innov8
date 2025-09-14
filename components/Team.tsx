@@ -2,6 +2,19 @@ import Image from 'next/image'
 import React from 'react'
 
 const Team = () => {
+  const teamMembers = [
+    { name: "Bhagvanth", position: "President", image: "/team/bhagvanth_dance.gif", isCore: true },
+    { name: "Rahil", position: "Vice President", image: "/team/rahil_dance.gif", isCore: true },
+    { name: "Sabika", position: "Secretary", image: "/team/sabika_dance.gif", isCore: true },
+    { name: "Praveen", position: "Technical Lead", image: "/team/praveen_dance.gif", isCore: true },
+    { name: "Aman", position: "Creative Head", image: "/team/bhagvanth_dance.gif", isCore: true },
+    { name: "Member 6", position: "Developer", image: "/team/rahil_dance.gif", isCore: false },
+    { name: "Member 7", position: "Designer", image: "/team/sabika_dance.gif", isCore: false },
+    { name: "Member 8", position: "Coordinator", image: "/team/praveen_dance.gif", isCore: false },
+    { name: "Member 9", position: "Manager", image: "/team/bhagvanth_dance.gif", isCore: false },
+    { name: "Member 10", position: "Volunteer", image: "/team/rahil_dance.gif", isCore: false },
+  ];
+
   return (
     <div className='min-h-screen w-full relative bg-[#0227F0] pt-28 md:pt-8 text-white overflow-visible'>
       {/* Mobile Layout */}
@@ -11,194 +24,85 @@ const Team = () => {
           <h1 className="font-extrabold uppercase font-anton leading-none tracking-wide text-[30vw] md:text-[20vw]">Team</h1>
         </div>
         
-        {/* Team members in vertical column for mobile */}
-        <div className="flex flex-col items-center gap-6 px-4">
-          <div className="flex flex-col items-center">
-            <Image 
-              src="/team/bhagvanth_dance.gif" 
-              alt="Team Member 1" 
-              width={120} 
-              height={200}
-              className="w-[40vw] h-[60vw] object-contain"
-            />
-            <p className="text-white text-lg font-semibold mt-2">Bhagvanth</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image 
-              src="/team/bhagvanth_dance.gif" 
-              alt="Team Member 2" 
-              width={120} 
-              height={200}
-              className="w-[40vw] h-[60vw] object-contain"
-            />
-            <p className="text-white text-lg font-semibold mt-2">Member 2</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image 
-              src="/team/rahil_dance.gif" 
-              alt="Team Member 3" 
-              width={120} 
-              height={200}
-              className="w-[40vw] h-[60vw] object-contain"
-            />
-            <p className="text-white text-lg font-semibold mt-2">Rahil</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image 
-              src="/team/sabika_dance.gif" 
-              alt="Team Member 4" 
-              width={120} 
-              height={200}
-              className="w-[40vw] h-[60vw] object-contain"
-            />
-            <p className="text-white text-lg font-semibold mt-2">Sabika</p>
-          </div>
-          <div className="flex flex-col items-center">
-            <Image 
-              src="/team/rahil_dance.gif" 
-              alt="Team Member 5" 
-              width={120} 
-              height={200}
-              className="w-[40vw] h-[60vw] object-contain"
-            />
-            <p className="text-white text-lg font-semibold mt-2">Praveen</p>
-          </div>
+        {/* Team members cards for mobile */}
+        <div className="flex flex-col items-center gap-4 px-4 pb-8">
+          {/* Core team members - bigger cards */}
+          {teamMembers.filter(member => member.isCore).map((member, index) => (
+            <div key={index} className="w-full max-w-sm bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 flex items-center gap-4">
+              <Image 
+                src={member.image} 
+                alt={member.name} 
+                width={100} 
+                height={120}
+                className="w-24 h-32 rounded-xl object-cover border-2 border-white/30"
+              />
+              <div className="flex-1">
+                <h3 className="text-white font-anton text-xl uppercase tracking-wide">{member.name}</h3>
+                <p className="text-white/80 text-sm mt-1">{member.position}</p>
+              </div>
+            </div>
+          ))}
+          
+          {/* Regular team members - smaller cards */}
+          {teamMembers.filter(member => !member.isCore).map((member, index) => (
+            <div key={index} className="w-full max-w-xs bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 flex items-center gap-3">
+              <Image 
+                src={member.image} 
+                alt={member.name} 
+                width={80} 
+                height={100}
+                className="w-20 h-28 rounded-lg object-cover border-2 border-white/30"
+              />
+              <div className="flex-1">
+                <h3 className="text-white font-anton text-lg uppercase tracking-wide">{member.name}</h3>
+                <p className="text-white/80 text-xs mt-1">{member.position}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Desktop Layout */}
-      <div className="hidden md:flex justify-end items-center min-h-screen">
-        {/* Team Images positioned above each letter */}
-        <div className="absolute right-0 w-full flex justify-end items-end overflow-visible">
-          <div className="relative flex items-end justify-center gap-[3vw] lg:gap-[5vw] pr-2 md:pr-4 lg:pr-8">
-            {/* Image above T */}
-            <div className="flex flex-col items-center">
-              <Image 
-                src="/team/bhagvanth_dance.gif" 
-                alt="Team Member 1" 
-                width={120} 
-                height={200}
-                className="w-[9vw] sm:h-[15vw] md:w-[30vw] md:h-[45vw] object-contain"
-              />
-              <p className="text-white text-sm md:text-base lg:text-lg font-semibold mt-1">Bhagvanth</p>
-            </div>
-            
-            {/* Image above E */}
-            <div className="flex flex-col items-center">
-              <Image 
-                src="/team/bhagvanth_dance.gif" 
-                alt="Team Member 2" 
-                width={120} 
-                height={200}
-                className="w-[9vw] sm:h-[15vw] md:w-[30vw] md:h-[45vw] object-contain"
-              />
-              <p className="text-white text-sm md:text-base lg:text-lg font-semibold mt-1">Member 2</p>
-            </div>
-            
-            {/* Image above A */}
-            <div className="flex flex-col items-center">
-              <Image 
-                src="/team/rahil_dance.gif" 
-                alt="Team Member 3" 
-                width={120} 
-                height={200}
-                className="w-[9vw] sm:h-[15vw] md:w-[30vw] md:h-[45vw] object-contain"
-              />
-              <p className="text-white text-sm md:text-base lg:text-lg font-semibold mt-1">Rahil</p>
-            </div>
-            
-            {/* Images above M (2 people side by side) */}
-            <div className="flex flex-col items-center">
-              <Image 
-                src="/team/sabika_dance.gif" 
-                alt="Team Member 4" 
-                width={120} 
-                height={200}
-                className="w-[9vw] sm:h-[15vw] md:w-[30vw] md:h-[45vw] object-contain"
-              />
-              <p className="text-white text-sm md:text-base lg:text-lg font-semibold mt-1">Sabika</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <Image 
-                src="/team/rahil_dance.gif" 
-                alt="Team Member 5" 
-                width={120} 
-                height={200}
-                className="w-[9vw] sm:h-[15vw] md:w-[30vw] md:h-[45vw] object-contain"
-              />
-              <p className="text-white text-sm md:text-base lg:text-lg font-semibold mt-1">Praveen</p>
-            </div>
-          </div>
+      <div className="hidden md:block">
+        {/* Large TEAM title */}
+        <div className="text-center mb-12">
+          <h1 className="font-extrabold uppercase font-anton leading-none tracking-wide text-[44vw]">Team</h1>
         </div>
         
-        <h1 className="font-extrabold uppercase font-anton leading-none tracking-wide text-[44vw]">Team</h1>
-
-        {/* team members */}
-        {/* <div className=" space-y-3">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 flex items-center gap-3 w-64">
-            <div className="w-12 h-12 bg-gray-300 rounded-lg overflow-hidden flex-shrink-0">
-              <Image 
-                src="/team/bhagvanth_dance.gif" 
-                alt="Member 1" 
-                width={48} 
-                height={48}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-white font-semibold text-sm">John Doe</h3>
-              <p className="text-white/70 text-xs">Developer</p>
-            </div>
+        {/* Team Cards */}
+        <div className="flex items-center justify-center pb-8">
+          <div className="grid grid-cols-2 lg:grid-cols-5  gap-6  mx-auto px-8">
+            {/* Core team members - bigger cards (first 5) */}
+            {teamMembers.filter(member => member.isCore).map((member, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 flex flex-col items-center text-center hover:bg-white/15 transition-all duration-300">
+                <Image 
+                  src={member.image} 
+                  alt={member.name} 
+                  width={160} 
+                  height={200}
+                  className="w-40 h-52 rounded-2xl object-cover border-4 border-white/30 mb-4"
+                />
+                <h3 className="text-white font-anton text-2xl uppercase tracking-wide mb-2">{member.name}</h3>
+                <p className="text-white/80 text-base">{member.position}</p>
+              </div>
+            ))}
+            
+            {/* Regular team members - smaller cards */}
+            {teamMembers.filter(member => !member.isCore).map((member, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 flex flex-col items-center text-center hover:bg-white/15 transition-all duration-300">
+                <Image 
+                  src={member.image} 
+                  alt={member.name} 
+                  width={120} 
+                  height={140}
+                  className="w-28 h-36 rounded-xl object-cover border-2 border-white/30 mb-3"
+                />
+                <h3 className="text-white font-anton text-lg uppercase tracking-wide mb-1">{member.name}</h3>
+                <p className="text-white/80 text-sm">{member.position}</p>
+              </div>
+            ))}
           </div>
-
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 flex items-center gap-3 w-64">
-            <div className="w-12 h-12 bg-gray-300 rounded-lg overflow-hidden flex-shrink-0">
-              <Image 
-                src="/team/rahil_dance.gif" 
-                alt="Member 2" 
-                width={48} 
-                height={48}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-white font-semibold text-sm">Jane Smith</h3>
-              <p className="text-white/70 text-xs">Designer</p>
-            </div>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 flex items-center gap-3 w-64">
-            <div className="w-12 h-12 bg-gray-300 rounded-lg overflow-hidden flex-shrink-0">
-              <Image 
-                src="/team/sabika_dance.gif" 
-                alt="Member 3" 
-                width={48} 
-                height={48}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-white font-semibold text-sm">Mike Johnson</h3>
-              <p className="text-white/70 text-xs">Manager</p>
-            </div>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3 flex items-center gap-3 w-64">
-            <div className="w-12 h-12 bg-gray-300 rounded-lg overflow-hidden flex-shrink-0">
-              <Image 
-                src="/team/praveen_dance.gif" 
-                alt="Member 4" 
-                width={48} 
-                height={48}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <h3 className="text-white font-semibold text-sm">Sarah Wilson</h3>
-              <p className="text-white/70 text-xs">Coordinator</p>
-            </div>
-          </div>
-        </div> */}
+        </div>
       </div>
     </div>
   )

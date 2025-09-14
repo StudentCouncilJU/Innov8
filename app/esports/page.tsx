@@ -325,12 +325,12 @@ Only **1 participant** per entry.
             link="#"
             image="/posters/5.jpg"
           />
-          {/* <Card
-            name="Fifa"
+          <Card
+            name="Free Fire"
             description="Contact us at +91 8619964199"
             link="#"
-            image="/posters/8.jpg"
-          /> */}
+            image="/posters/freefire.png"
+          /> 
         </div>
       </div>
       <Footer />
