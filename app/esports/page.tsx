@@ -327,16 +327,136 @@ Only **1 participant** per entry.
           />
           <Card
             name="Free Fire"
-            description="Contact us at +91 8619964199"
+            description={`# Free Fire Max Tournament Rules and Details
+
+## About the Event
+Welcome to the Free Fire Max Tournament, an action-packed competition bringing together the best Free Fire players from around the world!  
+This event promises an unforgettable experience, filled with thrilling gameplay, intense battles, and massive rewards.
+
+---
+
+## Team Specification
+- Each team may consist of **4+1 participants** (4 players + 1 substitute).  
+- Students from different educational institutions are allowed to form teams.
+
+---
+
+## Rules and Regulations
+
+### 1. Device Policy
+- Emulators and iPads are **prohibited**; only mobile phones are allowed.
+
+### 2. Disconnection Protocol
+- If a player disconnects, the squad may continue at a disadvantage.  
+- If **50% of the lobby is disconnected**, a rematch might be considered.
+
+### 3. Technical Issues
+- Hardware and internet issues are the responsibility of the participating squad.
+
+### 4. Fair Play
+- Using hacks or unauthorized third-party tools/software leads to **immediate disqualification**.  
+- The decision of the organizers will be final.  
+- In case of any suspected issue or cause for concern, the team may be put under observation, and the device may be taken for a thorough examination.
+
+---
+
+## Battle Royale Settings
+
+### Map Pool
+- **BO1**: Bermuda, Purgatory, Kalahari  
+- **BO2**: Bermuda, Purgatory, Kalahari, Alpine, Nexterra, Solara  
+> Note: Changes in the map pool will be decided by tournament officials.
+
+### Room Mode
+- Battle Royale
+
+### Room Settings
+- Game Mode: Classic  
+- Team Size: Squad  
+- Drop List: Esports Mode  
+- Players: 40-48  
+- Spectators: 16  
+
+#### Game Settings
+- HP: 200  
+- Movement Speed: 100%  
+- Environment: Day  
+- Fall Damage: Yes  
+- Airdrop: Yes  
+- Vehicles: Yes  
+- UAV: Yes  
+- EP: 0  
+- Jump Height: 100%  
+- Limited Ammo: Yes  
+- Loadout: Yes  
+- Character Skill: Yes  
+- Gun Property: No  
+- Airstrike: No  
+
+#### Observer Settings
+- Death Spectate: Yes  
+- Save Replays: Yes  
+- Hide Nickname: Yes  
+- Block Emulator: Yes  
+- Switch Position: No  
+
+---
+
+## Point System
+
+### Kill Points
+- **1 point per kill**
+
+### Placement Points
+| Position | Points |
+|----------|--------|
+| 1st      | 12     |
+| 2nd      | 9      |
+| 3rd      | 8      |
+| 4th      | 7      |
+| 5th      | 6      |
+| 6th      | 5      |
+| 7th      | 4      |
+| 8th      | 3      |
+| 9th      | 2      |
+| 10th     | 1      |
+| 11th–12th| 0      |
+
+---
+
+## Fixtures
+
+- Number of Rounds: Determined by the total number of entries, with a **maximum of 12 teams per round**.
+
+### Match Structure
+- Qualifiers: Open to all teams (**BO1**)  
+- Semi-Final: Top 36 teams (**BO1**)  
+- Final: Top 12 teams (**BO2**)  
+> Note: Any changes in match structure will be decided by the tournament officials.
+
+---
+
+## Judging Criteria
+- The winner will be determined in the final round by summing up all points earned.  
+- The squad with the **highest total points wins**.  
+- Each kill earns **1 point**.
+
+---
+
+## Rule Changes
+The organizers reserve the right to modify or introduce additional rules as necessary during the tournament.
+
+> *Violation of any of the above rules will lead to disqualification.*
+`}
             link="#"
             image="/posters/freefire.png"
           /> 
           <Card
             name="FIFA"
-            description={`coming Soon...`}
+            description={'Coming soon...'}
             link="#"
-            image="/posters/fifa.png"
-          />
+            image="/posters/8.png"
+            />
         </div>
       </div>
       <Footer />
