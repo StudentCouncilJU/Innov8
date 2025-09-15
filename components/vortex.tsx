@@ -596,6 +596,12 @@ export const Vortex = (props: VortexProps) => {
   }
 
   useEffect(() => {
+    // Reduced performance settings for better performance
+    const performanceSettings = {
+      particleCount: typeof window !== 'undefined' && window.innerWidth < 768 ? 100 : 150, // Fewer particles on mobile
+      fps: typeof window !== 'undefined' && window.innerWidth < 768 ? 30 : 60 // Lower FPS on mobile
+    };
+    
     setup()
     window.addEventListener("resize", handleResize)
 
@@ -605,7 +611,8 @@ export const Vortex = (props: VortexProps) => {
       if (!canvas || !ctx) return
       draw(canvas, ctx)
     }
-    gsap.ticker.fps(60)
+    
+    gsap.ticker.fps(performanceSettings.fps)
     gsap.ticker.add(loop)
 
     if (containerRef.current) {

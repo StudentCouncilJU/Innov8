@@ -1,14 +1,16 @@
 "use client";
 import React from "react";
-// import RenderModel from "./Render";
-// import { Model } from "./models/Model";
-// import { GlowingSphere } from "./glowing-sphere";
-import { useEffect, useRef } from "react";
-// import { Vortex } from "./vortex";
+import { Model } from "./models/Model";
+import { GlowingSphere } from "./glowing-sphere";
+import { useEffect, useRef, useState } from "react";
 import VortexDemoSecond from "./vortex-demo-2";
+import { getOptimalSettings } from "@/lib/performance";
+import Performance3DLoader from "./Performance3DLoader";
 
 function Hero() {
   const cursor = useRef({ x: 0, y: 0 });
+  const [performanceSettings] = useState(getOptimalSettings());
+  const [shouldRender3D, setShouldRender3D] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -17,7 +19,16 @@ function Hero() {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    
+    // Delay 3D rendering to improve initial load
+    const timer = setTimeout(() => {
+      setShouldRender3D(true);
+    }, 1000);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -27,10 +38,18 @@ function Hero() {
           <div className="absolute inset-0 z-0">
             <VortexDemoSecond />
           </div>
-          {/* <RenderModel>
-            <Model />
-            <GlowingSphere scale={5} />
-          </RenderModel> */}
+          {/* Conditionally render 3D model based on performance */}
+          {shouldRender3D && performanceSettings.enablePostProcessing && (
+            <div className="absolute inset-0 z-10">
+              <Performance3DLoader className="w-full h-full">
+                <Model />
+                <GlowingSphere 
+                  scale={3} 
+                  particleCount={performanceSettings.particleCount} 
+                />
+              </Performance3DLoader>
+            </div>
+          )}
         </div>
         <div className="flex flex-col z-30 justify-end items-start gap-4 w-full">
           <h1 className="uppercase font-anton text-white text-6xl md:text-8xl">

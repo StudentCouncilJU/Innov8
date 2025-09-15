@@ -28,7 +28,15 @@ function Navbar() {
         {/* Logo */}
 
         <Link href="/">
-          <Image src="/logo.gif" alt="Logo" width={150} height={150} />
+          <Image 
+            src="/logo.gif" 
+            alt="Logo" 
+            width={150} 
+            height={150} 
+            priority
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+          />
         </Link>
       </div>
       <div className="flex gap-5 min-w-1/3 items-center justify-end">
@@ -47,6 +55,7 @@ function Navbar() {
               width={35}
               height={35}
               className="text-white stroke-white"
+              loading="lazy"
             />
           </Link>
           <Link href="https://www.linkedin.com/company/student-council-jecrc-university/posts/?feedView=all">
@@ -56,6 +65,7 @@ function Navbar() {
               width={35}
               height={35}
               className="text-white stroke-white"
+              loading="lazy"
             />
           </Link>
         </div>

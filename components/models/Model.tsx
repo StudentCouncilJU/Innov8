@@ -63,12 +63,22 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
 
   // Floating animation
   useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-    if (group.current) {
+    if (!group.current) return;
+    
+    try {
+      const t = clock.getElapsedTime();
       group.current.position.y = 0.2 + Math.sin(t * 2) * 0.1; // up & down float
       group.current.rotation.y = Math.sin(t * 0.5) * 0.2; // gentle sway
+    } catch (error) {
+      console.error('Animation error:', error);
     }
   });
+
+  // Check if geometry exists
+  if (!nodes.mesh_0?.geometry) {
+    console.error('Model geometry not found');
+    return null;
+  }
 
   return (
     <group ref={group} {...props} dispose={null} scale={2.8} position={[0, 0.2, 0]} >

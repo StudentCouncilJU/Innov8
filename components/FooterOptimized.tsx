@@ -1,29 +1,94 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Footer = () => {
+  const [videoState, setVideoState] = useState<'loading' | 'loaded' | 'error' | 'timeout'>('loading');
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // Set a timeout for video loading
+    timeoutRef.current = setTimeout(() => {
+      if (videoState === 'loading') {
+        console.log('Video loading timeout - switching to gradient background');
+        setVideoState('timeout');
+      }
+    }, 8000); // 8 second timeout
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [videoState]);
+
+  const handleVideoLoad = () => {
+    console.log('Video loaded successfully');
+    setVideoState('loaded');
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  const handleVideoError = (error: any) => {
+    console.error('Video failed to load:', error);
+    setVideoState('error');
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
   return (
     <div id="footer" className="relative min-h-screen w-full overflow-hidden">
-      {/* Background Video - Simple, no optimization */}
-      <video
-        className="absolute top-0 left-0 w-screen h-screen object-cover z-0"
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{
-          minWidth: "100vw",
-          minHeight: "100vh",
-          width: "100vw",
-          height: "100vh",
-        }}
-      >
-        <source src="/innov8.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Always show fallback background first */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black z-0" />
+      
+      {/* Video - only try to load if we haven't timed out or errored */}
+      {videoState !== 'error' && videoState !== 'timeout' && (
+        <video
+          ref={videoRef}
+          className={`absolute top-0 left-0 w-screen h-screen object-cover transition-opacity duration-1000 ${
+            videoState === 'loaded' ? 'z-10 opacity-100' : 'z-5 opacity-0'
+          }`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          onLoadedData={handleVideoLoad}
+          onCanPlay={handleVideoLoad}
+          onError={handleVideoError}
+          style={{
+            minWidth: "100vw",
+            minHeight: "100vh",
+            width: "100vw",
+            height: "100vh",
+          }}
+        >
+          <source src="/innov8.mp4" type="video/mp4" />
+        </video>
+      )}
+
+      {/* Loading indicator - only show briefly */}
+      {videoState === 'loading' && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <div className="text-white/80 text-sm font-anton animate-pulse">
+            Loading Experience...
+          </div>
+        </div>
+      )}
+
+      {/* Debug info - remove in production */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="absolute top-4 right-4 z-20 text-white/70 text-xs bg-black/50 p-2 rounded">
+          Video State: {videoState}
+        </div>
+      )}
 
       {/* Content overlay */}
-      <div className="relative z-10 flex items-end justify-between md:items-end md:justify-center min-h-screen px-6">
+      <div className="relative z-30 flex items-end justify-between md:items-end md:justify-center min-h-screen px-6">
         <div className="text-white/40 hidden md:block stroke-2 stroke-amber-300 text-3xl md:text-[10rem] uppercase -mb-15  font-big-shoulders-extrabold tracking-wider">
           Ju Innov8 3.0
         </div>
@@ -74,7 +139,7 @@ const Footer = () => {
               {/* Phone 1 - Left aligned */}
               <div className="text-left">
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+919664330564"
                   className="text-white hover:text-white/80 transition-colors duration-200 font-anton tracking-wide"
                 >
                   +91 96643 30564
@@ -84,7 +149,7 @@ const Footer = () => {
               {/* Phone 2 - Right aligned */}
               <div className="text-right">
                 <a
-                  href="tel:+9876543210"
+                  href="tel:+918619964199"
                   className="text-white hover:text-white/80 transition-colors duration-200 font-anton tracking-wide"
                 >
                  +91 861 996 4199
@@ -94,7 +159,7 @@ const Footer = () => {
               {/* Phone 3 - Left aligned */}
               <div className="text-left">
                 <a
-                  href="tel:+1122334455"
+                  href="tel:+918003150294"
                   className="text-white hover:text-white/80 transition-colors duration-200 font-anton tracking-wide"
                 >
                   +91 80031 50294
