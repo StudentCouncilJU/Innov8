@@ -315,7 +315,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import { gsap } from "gsap"
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -371,7 +371,7 @@ export const Vortex = (props: VortexProps) => {
     return 0.3 + 0.7 * t
   }
 
-  const setup = () => {
+  const setup = useCallback(() => {
     const canvas = canvasRef.current
     const container = containerRef.current
     if (canvas && container) {
@@ -384,7 +384,7 @@ export const Vortex = (props: VortexProps) => {
         draw(canvas, ctx)
       }
     }
-  }
+  }, [])
 
   const initParticles = () => {
     particleProps = new Float32Array(particlePropsLength)
@@ -455,7 +455,7 @@ export const Vortex = (props: VortexProps) => {
     }
   }
 
-  const draw = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+  const draw = useCallback((canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     tick++
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -470,7 +470,7 @@ export const Vortex = (props: VortexProps) => {
     renderToScreen(canvas, ctx)
 
     // animationFrameId.current = window.requestAnimationFrame(() => draw(canvas, ctx))
-  }
+  }, [])
 
   const rotateY = (x: number, y: number, z: number, a: number) => {
     const cos = Math.cos(a),
@@ -478,11 +478,11 @@ export const Vortex = (props: VortexProps) => {
     return [cos * x + sin * z, y, -sin * x + cos * z] as const
   }
 
-  const rotateX = (x: number, y: number, z: number, a: number) => {
-    const cos = Math.cos(a),
-      sin = Math.sin(a)
-    return [x, cos * y - sin * z, sin * y + cos * z] as const
-  }
+  // const rotateX = (x: number, y: number, z: number, a: number) => {
+  //   const cos = Math.cos(a),
+  //     sin = Math.sin(a)
+  //   return [x, cos * y - sin * z, sin * y + cos * z] as const
+  // }
 
   const project = (x: number, y: number, z: number, cx: number, cy: number, fov: number, zOffset: number) => {
     const zp = z + zOffset
@@ -556,7 +556,7 @@ export const Vortex = (props: VortexProps) => {
     ctx.restore()
   }
 
-  const resize = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
+  const resize = (canvas: HTMLCanvasElement, _ctx: CanvasRenderingContext2D) => {
     const { innerWidth, innerHeight } = window
 
     canvas.width = innerWidth
@@ -587,15 +587,21 @@ export const Vortex = (props: VortexProps) => {
     ctx.restore()
   }
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext("2d")
     if (canvas && ctx) {
       resize(canvas, ctx)
     }
-  }
+  }, [])
 
   useEffect(() => {
+    // Reduced performance settings for better performance
+    const performanceSettings = {
+      particleCount: typeof window !== 'undefined' && window.innerWidth < 768 ? 100 : 150, // Fewer particles on mobile
+      fps: typeof window !== 'undefined' && window.innerWidth < 768 ? 30 : 60 // Lower FPS on mobile
+    };
+    
     setup()
     window.addEventListener("resize", handleResize)
 
@@ -605,7 +611,8 @@ export const Vortex = (props: VortexProps) => {
       if (!canvas || !ctx) return
       draw(canvas, ctx)
     }
-    gsap.ticker.fps(60)
+    
+    gsap.ticker.fps(performanceSettings.fps)
     gsap.ticker.add(loop)
 
     if (containerRef.current) {

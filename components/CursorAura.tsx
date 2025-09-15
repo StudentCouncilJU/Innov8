@@ -14,7 +14,7 @@ type Point = { x: number; y: number; age: number };
 
 export default function CursorAura({
   color = "rgba(173,216,230,0.15)", // soft light blue
-  maxPoints = 180,                  // longer trail
+  maxPoints = typeof window !== 'undefined' && window.innerWidth < 768 ? 90 : 120,  // Fewer points on mobile
   pointSize = 20,                   // smaller base particle
   decay = 0.03,                      // slower fade for smoke
   blur = 50,                         // more blur for misty feel

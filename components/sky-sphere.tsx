@@ -70,7 +70,7 @@ function generateSpacedPoints(count: number, minSepAngle: number): Vec3[] {
 
 export default function SkySphere({
   className,
-  particleCount = 900,
+  particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 400 : 600, // Reduced particles for mobile
   sphereRadius = 520,
   rotationSpeed = 0.35,
   color = "#6fd7ff",

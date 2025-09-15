@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div id="footer" className="relative min-h-screen w-full overflow-hidden">
-      {/* Background Video */}
+      {/* Background Video - Simple, no optimization */}
       <video
         className="absolute top-0 left-0 w-screen h-screen object-cover z-0"
         autoPlay
@@ -19,7 +19,6 @@ const Footer = () => {
         }}
       >
         <source src="/innov8.mp4" type="video/mp4" />
-        {/* <source src="/vid2.webm" type="video/webm" /> */}
         Your browser does not support the video tag.
       </video>
 

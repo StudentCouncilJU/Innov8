@@ -1,7 +1,9 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Team = () => {
+  const [imageLoaded, setImageLoaded] = useState<{[key: string]: boolean}>({});
+
   const teamMembers = [
     { name: "Bhagvanth", position: "President", image: "/team/bhagvanth_dance.gif", isCore: true },
     { name: "Rahil", position: "Vice President", image: "/team/rahil_dance.gif", isCore: true },
@@ -35,6 +37,10 @@ const Team = () => {
                 width={100} 
                 height={120}
                 className="w-24 h-32 rounded-xl object-cover border-2 border-white/30"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                onLoad={() => setImageLoaded({...imageLoaded, [member.name]: true})}
               />
               <div className="flex-1">
                 <h3 className="text-white font-anton text-xl uppercase tracking-wide">{member.name}</h3>
@@ -81,6 +87,10 @@ const Team = () => {
                   width={160} 
                   height={200}
                   className="w-40 h-52 rounded-2xl object-cover border-4 border-white/30 mb-4"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                  onLoad={() => setImageLoaded({...imageLoaded, [member.name]: true})}
                 />
                 <h3 className="text-white font-anton text-2xl uppercase tracking-wide mb-2">{member.name}</h3>
                 <p className="text-white/80 text-base">{member.position}</p>

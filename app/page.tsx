@@ -3,16 +3,31 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import dynamic from "next/dynamic"
 
-import Footer from "@/components/Footer"
-import { GlowingSphere } from "@/components/glowing-sphere"
-import Hero from "@/components/Hero"
-import LabSection from "@/components/lab/lab-section"
-import { Model } from "@/components/models/Model"
 import Navbar from "@/components/Navbar"
-import RenderModel from "@/components/Render"
-import Team from "@/components/Team"
-import VerticlesSections from "@/components/Verticles/VerticlesSections"
+import Hero from "@/components/Hero"
+import LazyComponent from "@/components/LazyComponent"
+
+// Lazy load heavy components
+const Footer = dynamic(() => import("@/components/Footer"), {
+  ssr: false,
+  loading: () => <div className="h-screen bg-black animate-pulse" />
+})
+
+const Team = dynamic(() => import("@/components/Team"), {
+  ssr: false,
+  loading: () => <div className="h-96 bg-blue-600 animate-pulse" />
+})
+
+const LabSection = dynamic(() => import("@/components/lab/lab-section"), {
+  loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
+})
+
+const VerticlesSections = dynamic(() => import("@/components/Verticles/VerticlesSections"), {
+  ssr: false,
+  loading: () => <div className="h-96 bg-gray-800 animate-pulse" />
+})
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -56,23 +71,35 @@ export default function Home() {
   return (
     <div className="w-full h-screen bg-black relative">
       <Navbar />
-      <div className="absolute inset-0 z-20">
-        <RenderModel>
-          <Model />
-          <GlowingSphere scale={5} />
-        </RenderModel>
-      </div>
+      
+      {/* Hero Section */}
       <Hero />
-      <VerticlesSections />
-     <div ref={containerRef} className="w-full min-h-screen bg-black relative transition-colors duration-1000">
-      <div id="lab">
-        <LabSection />
+      
+      {/* Main Content */}
+      <div ref={containerRef} className="w-full min-h-screen bg-black relative transition-colors duration-1000">
+        
+        {/* Verticles Section with Lazy Loading */}
+        <LazyComponent fallback={<div className="h-96 bg-gray-800 animate-pulse" />}>
+          <VerticlesSections />
+        </LazyComponent>
+        
+        {/* Lab Section */}
+        <div id="lab">
+          <LabSection />
+        </div>
+        
+        {/* Team Section with Lazy Loading */}
+        <LazyComponent fallback={<div className="h-96 mt-10 bg-blue-600 animate-pulse" />}>
+          <div id="team">
+            <Team />
+          </div>
+        </LazyComponent>
       </div>
-      {/* <div id="team">
-        <Team />
-      </div> */}
-     </div>
-      <Footer />
+      
+      {/* Footer with Lazy Loading */}
+      <LazyComponent fallback={<div className="h-screen bg-black animate-pulse" />}>
+        <Footer />
+      </LazyComponent>
     </div>
   )
 }
