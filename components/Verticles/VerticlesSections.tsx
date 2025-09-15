@@ -1,35 +1,3 @@
-// import React from 'react'
-// import RenderModel from '../Render'
-// import { Model } from './RotatingModal'
-
-// const VerticlesSections = () => {
-//   return (
-//     <section id='model-section' className='w-full bg-black flex justify-center relative'>
-//         <div className='w-full h-screen absolute inset-'>
-//             <RenderModel >
-//             <Model />
-//             </RenderModel>
-//         </div>
-//         <div className='relative z-10 flex flex-col items-center justify-center gap-10 pt-20'>
-//           <div className='p-20 border-2 bg-red-500 border-white rounded-xl mb-10 opacity-50'>
-//             <h1 className='text-white text-4xl md:text-6xl font-bold text-center'>Innovative Solutions</h1>
-//             <p className='text-white text-center mt-4 max-w-2xl mx-auto'>Discover cutting-edge technology and creative designs that push the boundaries of innovation. Our solutions are crafted to meet the demands of the future, today.</p>
-//           </div>
-//           <div className='p-20 border-2 bg-red-500 border-white rounded-xl mb-10 opacity-50'>
-//             <h1 className='text-white text-4xl md:text-6xl font-bold text-center'>Innovative Solutions</h1>
-//             <p className='text-white text-center mt-4 max-w-2xl mx-auto'>Discover cutting-edge technology and creative designs that push the boundaries of innovation. Our solutions are crafted to meet the demands of the future, today.</p>
-//           </div>
-//           <div className='p-20 border-2 bg-red-500 border-white rounded-xl mb-10 opacity-50 '>
-//             <h1 className='text-white text-4xl md:text-6xl font-bold text-center'>Innovative Solutions</h1>
-//             <p className='text-white text-center mt-4 max-w-2xl mx-auto'>Discover cutting-edge technology and creative designs that push the boundaries of innovation. Our solutions are crafted to meet the demands of the future, today.</p>
-//           </div>
-//         </div>
-//     </section>
-//   )
-// }
-
-// export default VerticlesSections
-
 "use client";
 
 import React, { useEffect, useRef } from "react";
