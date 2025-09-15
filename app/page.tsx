@@ -88,12 +88,12 @@ export default function Home() {
           <LabSection />
         </div>
         
-        {/* Team Section with Lazy Loading */}
+        {/* Team Section with Lazy Loading
         <LazyComponent fallback={<div className="h-96 mt-10 bg-blue-600 animate-pulse" />}>
           <div id="team">
             <Team />
           </div>
-        </LazyComponent>
+        </LazyComponent> */}
       </div>
       
       {/* Footer with Lazy Loading */}
