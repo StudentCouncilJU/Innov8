@@ -28,25 +28,25 @@ export const OptimizedHeroModel: React.FC<OptimizedHeroModelProps> = ({
       case 'low':
         return {
           scale: 2.8, // Same as original
-          animationSpeed: 0.5, // Slightly reduced for performance
-          floatIntensity: 0.1, // Same as original
-          swayIntensity: 0.2, // Same as original
+          animationSpeed: 0.3, // Much slower for performance
+          floatIntensity: 0.03, // Reduced movement
+          swayIntensity: 0.05, // Minimal sway
           enableShadows: false
         };
       case 'medium':
         return {
           scale: 2.8, // Same as original
-          animationSpeed: 0.75, // Slightly reduced
-          floatIntensity: 0.1, // Same as original
-          swayIntensity: 0.2, // Same as original
+          animationSpeed: 0.5, // Reduced speed
+          floatIntensity: 0.05, // Reduced movement
+          swayIntensity: 0.08, // Reduced sway
           enableShadows: true
         };
       default: // high
         return {
           scale: 2.8, // Same as original
-          animationSpeed: 1, // Same as original
-          floatIntensity: 0.1, // Same as original
-          swayIntensity: 0.2, // Same as original
+          animationSpeed: 0.8, // Smooth animation
+          floatIntensity: 0.05, // Gentler than original
+          swayIntensity: 0.1, // Gentler than original
           enableShadows: true
         };
     }
@@ -60,14 +60,28 @@ export const OptimizedHeroModel: React.FC<OptimizedHeroModelProps> = ({
         ? nodes.mesh_0.material[0] 
         : nodes.mesh_0.material;
       
-      // Only optimize texture filtering for performance on low settings
-      if (performance === 'low' && originalMaterial && typeof originalMaterial.clone === 'function') {
+      // Performance optimizations based on level
+      if (originalMaterial && typeof originalMaterial.clone === 'function') {
         const clonedMaterial = originalMaterial.clone();
-        // Minimal optimization - just texture filtering
         const materialWithMap = clonedMaterial as THREE.MeshStandardMaterial;
-        if (materialWithMap.map) {
-          materialWithMap.map.minFilter = THREE.LinearFilter;
+        
+        if (performance === 'low') {
+          // Aggressive optimizations for low-end devices
+          if (materialWithMap.map) {
+            materialWithMap.map.minFilter = THREE.LinearFilter;
+            materialWithMap.map.magFilter = THREE.LinearFilter;
+          }
+          if (materialWithMap.normalMap) materialWithMap.normalMap = null;
+          if (materialWithMap.roughnessMap) materialWithMap.roughnessMap = null;
+          materialWithMap.envMapIntensity = 0.3;
+        } else if (performance === 'medium') {
+          // Moderate optimizations
+          if (materialWithMap.map) {
+            materialWithMap.map.minFilter = THREE.LinearMipmapLinearFilter;
+          }
+          materialWithMap.envMapIntensity = 0.7;
         }
+        
         return clonedMaterial;
       }
       
@@ -77,13 +91,17 @@ export const OptimizedHeroModel: React.FC<OptimizedHeroModelProps> = ({
     return null;
   }, [nodes, performance]);
 
-  // Floating animation with performance consideration
+  // Floating animation with performance consideration - smoother and less intensive
   useFrame(({ clock }) => {
     if (!group.current) return;
     
-    const t = clock.getElapsedTime() * settings.animationSpeed;
-    group.current.position.y = 0.2 + Math.sin(t * 2) * settings.floatIntensity;
-    group.current.rotation.y = Math.sin(t * 0.5) * settings.swayIntensity;
+    try {
+      const t = clock.getElapsedTime() * settings.animationSpeed;
+      group.current.position.y = 0.2 + Math.sin(t * 0.8) * settings.floatIntensity; // Smoother floating
+      group.current.rotation.y = Math.sin(t * 0.3) * settings.swayIntensity; // Gentler sway
+    } catch (error) {
+      console.error('Animation error:', error);
+    }
   });
 
   if (!nodes?.mesh_0) {
@@ -96,6 +114,7 @@ export const OptimizedHeroModel: React.FC<OptimizedHeroModelProps> = ({
       dispose={null} 
       scale={settings.scale} 
       position={[0, 0.2, 0]}
+      frustumCulled={true}
     >
       <mesh
         name="mesh_0"
@@ -104,6 +123,7 @@ export const OptimizedHeroModel: React.FC<OptimizedHeroModelProps> = ({
         geometry={nodes.mesh_0.geometry}
         material={optimizedMaterial || nodes.mesh_0.material}
         frustumCulled={true}
+        matrixAutoUpdate={performance !== 'low'} // Reduce matrix updates on low-end
       />
     </group>
   );
