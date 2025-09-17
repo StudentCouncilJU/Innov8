@@ -67,8 +67,8 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
     
     try {
       const t = clock.getElapsedTime();
-      group.current.position.y = 0.2 + Math.sin(t * 2) * 0.1; // up & down float
-      group.current.rotation.y = Math.sin(t * 0.5) * 0.2; // gentle sway
+      group.current.position.y = 0.2 + Math.sin(t * 0.8) * 0.05; // smoother up & down float
+      group.current.rotation.y = Math.sin(t * 0.3) * 0.1; // gentler sway
     } catch (error) {
       console.error('Animation error:', error);
     }
