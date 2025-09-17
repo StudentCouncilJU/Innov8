@@ -91,51 +91,52 @@ const VerticlesSections = () => {
       className="w-full h-screen bg-black flex justify-center relative overflow-hidden"
     >
       <DotBackgroundDemo>
-        {/* 3D Model stays pinned */}
-      <div className="w-full h-screen absolute inset-0 pointer-events-none">
-        <RenderModel>
-          <Model />
-        </RenderModel>
-      </div>
+        {/* 3D Model container - positioned absolutely to fill the background */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
+          <RenderModel className="w-full h-full">
+            <Model />
+          </RenderModel>
+        </div>
 
-      {/* Cards */}
-      <div className="relative z-10 flex items-center justify-center w-full h-full">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div
-            key={i}
-            ref={(el) => setRef(el, i)}
-            className="absolute  border-2 border-black rounded-xl bg-black"
-          >
-            <video
-              className="w-full max-w-2xl rounded-lg"
-              autoPlay
-              muted
-              loop
-              playsInline
+        {/* Cards container */}
+        <div className="relative z-10 flex items-center justify-center w-full h-full">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div
+              key={i}
+              ref={(el) => setRef(el, i)}
+              className="absolute border-2 border-black rounded-xl bg-black"
             >
-              <source src={`/video/${i + 1}.mp4`} type="video/mp4" />
-              {/* <source src={`/videos/video-${i + 1}.webm`} type="video/webm" /> */}
-              Your browser does not support the video tag.
-            </video>
-            <BorderBeam
-              duration={6}
-              size={400}
-              className="from-transparent via-orange-300 to-transparent"
-            />
-            <BorderBeam
-              duration={6}
-              delay={3}
-              size={400}
-              borderWidth={2}
-              className="from-transparent via-blue-300 to-transparent"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute bottom-0 flex items-center justify-center p-6 w-full text-white">
-              <h2 className="text-4xl font-anton tracking-wider text-white/40 mb-2">{i + 1 === 1 ? "Software" : i + 1 === 2 ? "Hardware" : "Esports"}</h2>
+              <video
+                className="w-full max-w-2xl rounded-lg"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src={`/video/${i + 1}.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <BorderBeam
+                duration={6}
+                size={400}
+                className="from-transparent via-orange-300 to-transparent"
+              />
+              <BorderBeam
+                duration={6}
+                delay={3}
+                size={400}
+                borderWidth={2}
+                className="from-transparent via-blue-300 to-transparent"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute bottom-0 flex items-center justify-center p-6 w-full text-white">
+                <h2 className="text-4xl font-anton tracking-wider text-white/40 mb-2">
+                  {i + 1 === 1 ? "Software" : i + 1 === 2 ? "Hardware" : "Esports"}
+                </h2>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </DotBackgroundDemo>
     </section>
   );

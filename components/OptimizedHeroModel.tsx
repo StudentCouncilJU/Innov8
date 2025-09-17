@@ -22,59 +22,59 @@ export const OptimizedHeroModel: React.FC<OptimizedHeroModelProps> = ({
 
   const group = useRef<THREE.Group>(null!);
 
-  // Performance-based settings - smaller scale
+  // Performance-based settings - same scale as original model (2.8)
   const settings = useMemo(() => {
     switch (performance) {
       case 'low':
         return {
-          scale: 1.2,
-          animationSpeed: 0.3,
-          floatIntensity: 0.05,
-          swayIntensity: 0.1
+          scale: 2.8, // Same as original
+          animationSpeed: 0.5, // Slightly reduced for performance
+          floatIntensity: 0.1, // Same as original
+          swayIntensity: 0.2, // Same as original
+          enableShadows: false
         };
       case 'medium':
         return {
-          scale: 1.4,
-          animationSpeed: 0.5,
-          floatIntensity: 0.08,
-          swayIntensity: 0.15
+          scale: 2.8, // Same as original
+          animationSpeed: 0.75, // Slightly reduced
+          floatIntensity: 0.1, // Same as original
+          swayIntensity: 0.2, // Same as original
+          enableShadows: true
         };
-      default:
+      default: // high
         return {
-          scale: 1.6,
-          animationSpeed: 1,
-          floatIntensity: 0.1,
-          swayIntensity: 0.2
+          scale: 2.8, // Same as original
+          animationSpeed: 1, // Same as original
+          floatIntensity: 0.1, // Same as original
+          swayIntensity: 0.2, // Same as original
+          enableShadows: true
         };
     }
   }, [performance]);
 
-  // Optimized material
+  // Use original material with minimal optimizations
   const optimizedMaterial = useMemo(() => {
-    if (!nodes?.mesh_0?.material) return null;
-    
-    const material = Array.isArray(nodes.mesh_0.material) 
-      ? nodes.mesh_0.material[0] 
-      : nodes.mesh_0.material;
-    
-    if (!material || typeof material.clone !== 'function') return material;
-    
-    const clonedMaterial = material.clone() as THREE.MeshStandardMaterial;
-    
-    // Performance optimizations
-    if (performance === 'low') {
-      clonedMaterial.roughness = 0.8;
-      clonedMaterial.metalness = 0.2;
-      if (clonedMaterial.map) clonedMaterial.map.minFilter = THREE.LinearFilter;
-      if (clonedMaterial.normalMap) clonedMaterial.normalMap = null;
-      if (clonedMaterial.roughnessMap) clonedMaterial.roughnessMap = null;
-    } else if (performance === 'medium') {
-      clonedMaterial.roughness = 0.6;
-      clonedMaterial.metalness = 0.4;
-      if (clonedMaterial.map) clonedMaterial.map.minFilter = THREE.LinearMipmapLinearFilter;
+    // Just use the original material from the model like the original
+    if (nodes?.mesh_0?.material) {
+      const originalMaterial = Array.isArray(nodes.mesh_0.material) 
+        ? nodes.mesh_0.material[0] 
+        : nodes.mesh_0.material;
+      
+      // Only optimize texture filtering for performance on low settings
+      if (performance === 'low' && originalMaterial && typeof originalMaterial.clone === 'function') {
+        const clonedMaterial = originalMaterial.clone();
+        // Minimal optimization - just texture filtering
+        const materialWithMap = clonedMaterial as THREE.MeshStandardMaterial;
+        if (materialWithMap.map) {
+          materialWithMap.map.minFilter = THREE.LinearFilter;
+        }
+        return clonedMaterial;
+      }
+      
+      return originalMaterial;
     }
-
-    return clonedMaterial;
+    
+    return null;
   }, [nodes, performance]);
 
   // Floating animation with performance consideration
@@ -99,8 +99,8 @@ export const OptimizedHeroModel: React.FC<OptimizedHeroModelProps> = ({
     >
       <mesh
         name="mesh_0"
-        castShadow={performance !== 'low'}
-        receiveShadow={performance !== 'low'}
+        castShadow={settings.enableShadows}
+        receiveShadow={settings.enableShadows}
         geometry={nodes.mesh_0.geometry}
         material={optimizedMaterial || nodes.mesh_0.material}
         frustumCulled={true}

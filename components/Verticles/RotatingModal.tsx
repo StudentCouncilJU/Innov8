@@ -1,7 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useFrame } from "@react-three/fiber";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
+gsap.registerPlugin(ScrollTrigger);
 
 export function Model(props: any) {
   const group = useRef<any>(null);
@@ -21,6 +25,32 @@ export function Model(props: any) {
       });
     }
   }, [actions]);
+
+  // Add scroll-triggered rotation
+  useEffect(() => {
+    if (!group.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to(group.current.rotation, {
+        y: Math.PI * 2, // Full rotation
+        scrollTrigger: {
+          trigger: "#verticles-section",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Floating animation
+  useFrame(({ clock }) => {
+    if (!group.current) return;
+    const t = clock.getElapsedTime();
+    group.current.position.y = 0.5 + Math.sin(t * 0.5) * 0.1;
+  });
   return (
     <group
       ref={group}

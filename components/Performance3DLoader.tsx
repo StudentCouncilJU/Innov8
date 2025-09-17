@@ -85,6 +85,10 @@ const Performance3DLoader: React.FC<Performance3DLoaderProps> = ({
       >
         {settings.enablePostProcessing && <Environment preset="city" />}
         
+        {/* Minimal lighting for model visibility - same as original setup */}
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={0.8} />
+        
         <PerformanceMonitor
           onIncline={handlePerformanceChange}
           onDecline={handlePerformanceChange}

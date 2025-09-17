@@ -14,23 +14,18 @@ interface RenderModelProps {
 const RenderModel = ({ children, className, environment = "sunset" }: RenderModelProps) => {
   return (
     <Canvas
-      className={clsx("w-screen h-screen  absolute inset-0", className)}
+      className={clsx("w-full h-full", className)}
       shadows
       dpr={[1, 2]}
-
+      gl={{ alpha: true, antialias: true }}
     >
-      {/* Environment Lighting */}
-      {environment && <Environment preset="forest" />}
-
-      {/* Add a spotlight for better illumination
-      <SpotLight
-        position={[0, 5, 0]} // Adjust lighting to match the larger model
-        angle={0.1}
-        penumbra={1}
-        intensity={0.6}
-        decay={2}
-        castShadow
-      /> */}
+      {/* Environment Lighting - better for hologram model */}
+      {environment && <Environment preset="city" />}
+      
+      {/* Additional lighting for better model visibility */}
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[5, 5, 5]} intensity={1} />
+      <pointLight position={[-5, -5, -5]} intensity={0.5} />
 
       <PerformanceMonitor>
         <Suspense fallback={null}>{children}</Suspense>
