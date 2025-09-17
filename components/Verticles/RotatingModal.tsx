@@ -26,24 +26,6 @@ export function Model(props: any) {
     }
   }, [actions]);
 
-  // Add scroll-triggered rotation
-  useEffect(() => {
-    if (!group.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.to(group.current.rotation, {
-        y: Math.PI * 2, // Full rotation
-        scrollTrigger: {
-          trigger: "#verticles-section",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   // Floating animation
   useFrame(({ clock }) => {
