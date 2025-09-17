@@ -1,10 +1,12 @@
 "use client";
 import React from "react";
 import Performance3DLoader from "./Performance3DLoader";
-import OptimizedHeroModel from "./OptimizedHeroModel";
+// import OptimizedHeroModel from "./OptimizedHeroModel";
 import LoadingSpinner from "./LoadingSpinner";
 import { useEffect, useRef, useState } from "react";
 import VortexDemoSecond from "./vortex-demo-2";
+import { Model } from "./models/Model";
+import RenderModel from "./Render";
 
 function Hero() {
   const cursor = useRef({ x: 0, y: 0 });
@@ -50,16 +52,18 @@ function Hero() {
           {/* Optimized 3D Model with conditional loading */}
           {show3D && (
             <div className="absolute inset-0 z-10 pointer-events-none">
-              <Performance3DLoader 
+              {/* <Performance3DLoader 
                 className="w-full h-full"
                 fallback={
                   <div className="absolute inset-0 flex items-center justify-center">
                     <LoadingSpinner message="Loading Robot Model..." />
                   </div>
                 }
-              >
-                <OptimizedHeroModel performance="high" />
-              </Performance3DLoader>
+              > */}
+                <RenderModel>
+                  <Model />
+                </RenderModel>
+              {/* </Performance3DLoader> */}
             </div>
           )}
           
