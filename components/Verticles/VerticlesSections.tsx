@@ -90,7 +90,7 @@ const VerticlesSections = () => {
       ref={containerRef}
       className="w-full h-screen bg-black flex justify-center relative overflow-hidden"
     >
-      <DotBackgroundDemo>
+      {/* <DotBackgroundDemo> */}
         {/* 3D Model container - positioned absolutely to fill the background */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <RenderModel className="w-full h-full">
@@ -137,7 +137,7 @@ const VerticlesSections = () => {
             </div>
           ))}
         </div>
-      </DotBackgroundDemo>
+      {/* </DotBackgroundDemo> */}
     </section>
   );
 };

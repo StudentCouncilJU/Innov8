@@ -7,7 +7,7 @@ export default function VortexDemoSecond() {
       <Vortex
         backgroundColor="transparent"
         rangeY={800}
-        particleCount={1000}
+        particleCount={500}
         baseHue={180} // blue (fallback if palette not applied)
         baseRadius={2}
         rangeRadius={2}
