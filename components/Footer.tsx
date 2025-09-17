@@ -7,10 +7,11 @@ const Footer = () => {
       {/* Background Video - Simple, no optimization */}
       <video
         className="absolute top-0 left-0 w-screen h-screen object-cover z-0"
-        autoPlay
+        autoPlay={typeof window !== 'undefined' && window.innerWidth >= 768}  // Only autoplay on desktop
         muted
         loop
         playsInline
+        preload={typeof window !== 'undefined' && window.innerWidth < 768 ? "none" : "metadata"}  // No preload on mobile
         style={{
           minWidth: "100vw",
           minHeight: "100vh",

@@ -44,24 +44,24 @@ export const getOptimalSettings = () => {
   switch (level) {
     case 'low':
       return {
-        particleCount: 100,
+        particleCount: 50,  // Much lower
         shadowsEnabled: false,
-        fps: 30,
+        fps: 20,  // Lower FPS
         dpr: [0.5, 1],
         enablePostProcessing: false,
       };
     case 'medium':
       return {
-        particleCount: 400,
-        shadowsEnabled: true,
-        fps: 45,
+        particleCount: 150,  // Reduced
+        shadowsEnabled: false,  // Disable shadows even on medium
+        fps: 30,  // Lower FPS
         dpr: [1, 1.5],
         enablePostProcessing: false,
       };
     case 'high':
     default:
       return {
-        particleCount: 800,
+        particleCount: 300,  // Much lower than before
         shadowsEnabled: true,
         fps: 60,
         dpr: [1, 2],

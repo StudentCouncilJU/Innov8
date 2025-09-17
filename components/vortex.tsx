@@ -598,8 +598,8 @@ export const Vortex = (props: VortexProps) => {
   useEffect(() => {
     // Reduced performance settings for better performance
     const performanceSettings = {
-      particleCount: typeof window !== 'undefined' && window.innerWidth < 768 ? 100 : 150, // Fewer particles on mobile
-      fps: typeof window !== 'undefined' && window.innerWidth < 768 ? 30 : 60 // Lower FPS on mobile
+      particleCount: typeof window !== 'undefined' && window.innerWidth < 768 ? 50 : 100, // Much fewer particles
+      fps: typeof window !== 'undefined' && window.innerWidth < 768 ? 20 : 30 // Much lower FPS
     };
     
     setup()

@@ -14,9 +14,9 @@ type Point = { x: number; y: number; age: number };
 
 export default function CursorAura({
   color = "rgba(173,216,230,0.15)", // soft light blue
-  maxPoints = typeof window !== 'undefined' && window.innerWidth < 768 ? 90 : 120,  // Fewer points on mobile
+  maxPoints = typeof window !== 'undefined' && window.innerWidth < 768 ? 30 : 50,  // Drastically reduced
   pointSize = 20,                   // smaller base particle
-  decay = 0.03,                      // slower fade for smoke
+  decay = 0.05,                      // faster fade for better performance
   blur = 50,                         // more blur for misty feel
 }: CursorAuraProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);

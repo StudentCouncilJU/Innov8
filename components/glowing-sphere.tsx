@@ -91,7 +91,7 @@ interface GlowingSphereProps {
 export function GlowingSphere({
   position = [0, 0, 0],
   scale = 3,
-  particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 800 : 1200, // Reduced for mobile
+  particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 200 : 400, // Drastically reduced for performance
   baseHue = 180,
   baseSpeed = 0.0001,
   rangeSpeed = 0.0002,
