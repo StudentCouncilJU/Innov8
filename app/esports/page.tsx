@@ -6,7 +6,7 @@ import OptimizedMarquee from "@/components/OptimizedMarquee";
 import React from "react";
 
 const page = () => {
-  const marqueeItems = ["BGMI", "Valorant", "Tekken", "Fifa", "Free Fire"];
+  const marqueeItems = ["BGMI", "Valorant", "Tekken", "Fifa", "Free Fire Max", "BGMI", "Valorant", "Tekken", "Fifa", "Free Fire Max", "BGMI", "Valorant", "Tekken", "Fifa", "Free Fire Max", "BGMI", "Valorant", "Tekken", "Fifa", "Free Fire Max"];
 
   return (
     <div className="min-h-screen bg-black">
