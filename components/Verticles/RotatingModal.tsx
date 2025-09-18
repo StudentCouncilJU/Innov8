@@ -1,32 +1,79 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useMemo } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+import { useFrame } from "@react-three/fiber";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
+gsap.registerPlugin(ScrollTrigger);
 
 export function Model(props: any) {
   const group = useRef<any>(null);
+  const { performance = 'high' } = props;
   const { nodes, materials, animations } = useGLTF(
     "/Models/looking_glass_hologram_technology_meet_art.glb"
   );
   const { actions } = useAnimations(animations, group);
 
-  // Start animations when component mounts
+  // Performance-based settings
+  const settings = useMemo(() => {
+    switch (performance) {
+      case 'low':
+        return {
+          scale: 5, // Smaller scale for better performance
+          animationSpeed: 0.3,
+          floatIntensity: 0.05,
+          enableScrollRotation: false,
+          enableAnimations: false
+        };
+      case 'medium':
+        return {
+          scale: 6,
+          animationSpeed: 0.6,
+          floatIntensity: 0.08,
+          enableScrollRotation: true,
+          enableAnimations: true
+        };
+      default:
+        return {
+          scale: 7,
+          animationSpeed: 1,
+          floatIntensity: 0.1,
+          enableScrollRotation: true,
+          enableAnimations: true
+        };
+    }
+  }, [performance]);
+
+  // Start animations when component mounts (performance-dependent)
   useEffect(() => {
-    if (actions && Object.keys(actions).length > 0) {
-      // Play all available animations
+    if (settings.enableAnimations && actions && Object.keys(actions).length > 0) {
       Object.values(actions).forEach((action) => {
         if (action) {
           action.play();
         }
       });
     }
-  }, [actions]);
+  }, [actions, settings.enableAnimations]);
+
+  // Add scroll-triggered rotation (performance-dependent)
+  useEffect(() => {
+    // Scroll-triggered rotation disabled
+    return () => {};
+  }, [settings.enableScrollRotation, performance]);
+
+  // Floating animation (performance-dependent)
+  useFrame(({ clock }) => {
+    if (!group.current) return;
+    const t = clock.getElapsedTime() * settings.animationSpeed;
+    group.current.position.y = 0.5 + Math.sin(t * 0.5) * settings.floatIntensity;
+  });
   return (
     <group
       ref={group}
       {...props}
       dispose={null}
-      scale={7}
+      scale={settings.scale}
       position={[0, 0.5, 0]}
       rotation={[4.5, Math.PI / 2, 0]}
     >
