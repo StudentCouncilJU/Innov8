@@ -24,7 +24,7 @@ const LabSection = dynamic(() => import("@/components/lab/lab-section"), {
   loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
 })
 
-const VerticlesSections = dynamic(() => import("@/components/Verticles/OptimizedVerticlesSections"), {
+const VerticlesSections = dynamic(() => import("@/components/Verticles/VerticlesSections"), {
   ssr: false,
   loading: () => <div className="h-96 bg-gray-800 animate-pulse" />
 })
