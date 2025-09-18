@@ -24,7 +24,7 @@ const LabSection = dynamic(() => import("@/components/lab/lab-section"), {
   loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
 })
 
-const VerticlesSections = dynamic(() => import("@/components/Verticles/OptimizedVerticlesSections"), {
+const VerticlesSections = dynamic(() => import("@/components/Verticles/VerticlesSections"), {
   ssr: false,
   loading: () => <div className="h-96 bg-gray-800 animate-pulse" />
 })
@@ -78,10 +78,10 @@ export default function Home() {
       {/* Main Content */}
       <div ref={containerRef} className="w-full min-h-screen bg-black relative transition-colors duration-1000">
         
-        {/* Verticles Section with Lazy Loading */}
-        <LazyComponent fallback={<div className="h-96 bg-gray-800 animate-pulse" />}>
+      <LazyComponent fallback={<div className="h-96 bg-gray-800 animate-pulse" />}>
           <VerticlesSections />
         </LazyComponent>
+        
         
         {/* Lab Section */}
         <div id="lab">
