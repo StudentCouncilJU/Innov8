@@ -28,7 +28,7 @@ const page = () => {
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Prommptify
+              Promptify
             </span>
                         <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
@@ -48,7 +48,7 @@ const page = () => {
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Prommptify
+              Promptify
             </span>
                         <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
@@ -68,7 +68,7 @@ const page = () => {
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Prommptify
+              Promptify
             </span>
                         <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
@@ -88,7 +88,7 @@ const page = () => {
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
-              Prommptify
+              Promptify
             </span>
             <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-black " />
             <span className="text-black text-lg sm:text-2xl font-anton uppercase tracking-wider text-nowrap">
