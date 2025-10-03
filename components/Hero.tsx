@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import Performance3DLoader from "./Performance3DLoader";
-// import OptimizedHeroModel from "./OptimizedHeroModel";
 import LoadingSpinner from "./LoadingSpinner";
 import { useEffect, useRef, useState } from "react";
 import VortexDemoSecond from "./vortex-demo-2";

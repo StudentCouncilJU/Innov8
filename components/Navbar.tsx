@@ -42,7 +42,7 @@ function Navbar() {
       <div className="flex gap-5 min-w-1/3 items-center justify-end">
         {/* Links */}
         <Link
-          href="/sponsers"
+          href="/sponsors"
           className="text-white hover:text-white/80 transition-colors duration-200 font-anton tracking-wide"
         >
           Sponsors

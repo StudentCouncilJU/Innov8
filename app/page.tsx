@@ -15,11 +15,6 @@ const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <div className="h-screen bg-black animate-pulse" />
 })
 
-const Team = dynamic(() => import("@/components/Team"), {
-  ssr: false,
-  loading: () => <div className="h-96 bg-blue-600 animate-pulse" />
-})
-
 const LabSection = dynamic(() => import("@/components/lab/lab-section"), {
   loading: () => <div className="h-96 bg-gray-900 animate-pulse" />
 })
