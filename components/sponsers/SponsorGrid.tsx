@@ -21,13 +21,13 @@ const sponsors: Sponsor[] = [
   {
     id: "2",
     name: "Utopian Drinks",
-    logo: "/sponsors/utopianDrinks.jpeg",
+    logo: "/sponsors/utopianDrinks.png",
     website: "https://example.com",
   },
   {
     id: "3",
     name: "Internshala",
-    logo: "/sponsors/internshala.jpg",
+    logo: "/sponsors/internshala.png",
     website: "https://internshala.com/",
   },
   {
@@ -35,6 +35,12 @@ const sponsors: Sponsor[] = [
     name: "Unstop",
     logo: "/sponsors/unstop.svg",
     website: "https://unstop.com/",
+  },
+  {
+    id: "5",
+    name: "WS Cube Tech",
+    logo: "/sponsors/wslogo.svg",
+    website: "https://www.wscubetech.com/",
   },
 ];
 
@@ -56,7 +62,7 @@ const SponsorGrid = () => {
             onMouseLeave={() => setHoveredId(null)}
           >
             {/* Card Container */}
-            <div className="relative h-full min-h-[200px] overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-black p-8 transition-all duration-300 hover:border-neutral-700 hover:shadow-2xl hover:shadow-blue-500/10">
+            <div className="relative h-full min-h-[200px] overflow-hidden rounded-2xl border border-neutral-800 bg-transparent p-8 transition-all duration-300 hover:border-neutral-700 hover:shadow-2xl hover:shadow-blue-500/10">
               {/* Glow Effect on Hover */}
               {hoveredId === sponsor.id && (
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent pointer-events-none" />
