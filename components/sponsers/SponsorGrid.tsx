@@ -42,6 +42,12 @@ const sponsors: Sponsor[] = [
     logo: "/sponsors/wslogo.svg",
     website: "https://www.wscubetech.com/",
   },
+  {
+    id: "6",
+    name: "Plum",
+    logo: "/sponsors/plum.png",
+    website: "https://plumgoodness.com/",
+  },
 ];
 
 const SponsorGrid = () => {
