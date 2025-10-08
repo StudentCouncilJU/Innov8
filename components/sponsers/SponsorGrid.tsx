@@ -14,36 +14,48 @@ interface Sponsor {
 const sponsors: Sponsor[] = [
   {
     id: "1",
+    name: "Sony",
+    logo: "/sponsors/sony.png",
+    website: "https://www.sony.co.in/",
+  },
+  {
+    id: "2",
+    name: "Jio",
+    logo: "/sponsors/jio.png",
+    website: "https://www.jio.com/",
+  },
+  {
+    id: "3",
     name: "EaseMyTrip",
     logo: "/sponsors/easemytrip.svg",
     website: "https://www.easemytrip.com/",
   },
   {
-    id: "2",
+    id: "4",
     name: "Utopian Drinks",
     logo: "/sponsors/utopianDrinks.png",
     website: "https://example.com",
   },
   {
-    id: "3",
+    id: "5",
     name: "Internshala",
     logo: "/sponsors/internshala.png",
     website: "https://internshala.com/",
   },
   {
-    id: "4",
+    id: "6",
     name: "Unstop",
     logo: "/sponsors/unstop.svg",
     website: "https://unstop.com/",
   },
   {
-    id: "5",
+    id: "7",
     name: "WS Cube Tech",
     logo: "/sponsors/wslogo.svg",
     website: "https://www.wscubetech.com/",
   },
   {
-    id: "6",
+    id: "8",
     name: "Plum",
     logo: "/sponsors/plum.png",
     website: "https://plumgoodness.com/",
