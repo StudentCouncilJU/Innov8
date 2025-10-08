@@ -22,7 +22,7 @@ const sponsors: Sponsor[] = [
     id: "2",
     name: "Jio",
     logo: "/sponsors/jio.png",
-    website: "https://www.jio.com/",
+    website: "https://www.jiosaavn.com",
   },
   {
     id: "3",
